@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://di5cymoe3jyll"]
+
+[ext_resource type="Texture2D" uid="uid://cp6ihw5k60v2g" path="res://kenney_pirate-pack/PNG/Retina/Ship parts/crew (1).png" id="1_4flbx"]
+
+[node name="Player" type="Node2D"]
+
+[node name="Crew(1)" type="Sprite2D" parent="."]
+position = Vector2(10, 14)
+texture = ExtResource("1_4flbx")
