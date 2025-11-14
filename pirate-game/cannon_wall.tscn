@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq6kucqhq3wfw"]
+
+[ext_resource type="Texture2D" uid="uid://csixqtqpefrh4" path="res://kenney_pirate-pack/PNG/Default size/Tiles/tile_47.png" id="1_fhvrt"]
+[ext_resource type="Script" uid="uid://dp0guk1lmregj" path="res://cannon_wall.gd" id="1_qdace"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhvrt"]
+size = Vector2(63, 42)
+
+[node name="Cannon_Wall" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 120
+script = ExtResource("1_qdace")
+
+[node name="Cannon" type="Sprite2D" parent="."]
+texture = ExtResource("1_fhvrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fhvrt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1, -379)
+collision_mask = 56

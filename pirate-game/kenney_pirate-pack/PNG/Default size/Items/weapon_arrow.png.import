@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d2337mr5regsl"
+path="res://.godot/imported/weapon_arrow.png-98d70eccd7c31ca5e7245f428ae5eabe.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://kenney_pirate-pack/PNG/Default size/Items/weapon_arrow.png"
+dest_files=["res://.godot/imported/weapon_arrow.png-98d70eccd7c31ca5e7245f428ae5eabe.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
