@@ -74,6 +74,7 @@ Drop_Item={
 2d_physics/layer_6="Player"
 2d_physics/layer_7="Projektiles"
 2d_physics/layer_8="Effects"
+2d_physics/layer_9="UI"
 
 [rendering]
 

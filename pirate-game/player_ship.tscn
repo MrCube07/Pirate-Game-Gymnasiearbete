@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf2m2ji7bteep"]
+
+[ext_resource type="Script" uid="uid://cux5vptjrx2bc" path="res://player_ship.gd" id="1_7vdj4"]
+[ext_resource type="Texture2D" uid="uid://dv67ksqed603m" path="res://kenney_pirate-pack/PNG/Default size/Ships/ship (3).png" id="1_q2qul"]
+[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="2_gbmm3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vdj4"]
+radius = 46.0
+height = 264.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbmm3"]
+size = Vector2(161, 82)
+
+[node name="player_ship" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 62
+script = ExtResource("1_7vdj4")
+
+[node name="red_ship" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_q2qul")
+
+[node name="cannon_left" type="Sprite2D" parent="red_ship"]
+position = Vector2(15.2, 18.4)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_gbmm3")
+
+[node name="cannon_right" type="Sprite2D" parent="red_ship"]
+position = Vector2(-15.6, 18)
+rotation = -3.14159
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_gbmm3")
+
+[node name="boatCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 5)
+shape = SubResource("CapsuleShape2D_7vdj4")
+debug_color = Color(0.676561, 0.505349, 0.0317434, 0.42)
+
+[node name="EnterBoatArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 32
+
+[node name="EnterArea" type="CollisionShape2D" parent="EnterBoatArea"]
+visible = false
+shape = SubResource("RectangleShape2D_gbmm3")
+
+[node name="rigth_muzzle" type="Marker2D" parent="."]
+position = Vector2(-46.5, 44)
+
+[node name="left_muzzle" type="Marker2D" parent="."]
+position = Vector2(47.5, 45.5)
+
+[node name="player_driving_pos" type="Marker2D" parent="."]
+position = Vector2(1, -88)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://c0so65tk7o1ix"]
+[gd_scene load_steps=13 format=4 uid="uid://c0so65tk7o1ix"]
 
 [ext_resource type="Texture2D" uid="uid://6ge632e6bwe" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2water.png" id="1_4ptq8"]
 [ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://di5cymoe3jyll" path="res://player.tscn" id="2_1c2mv"]
 [ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_sb12i"]
 [ext_resource type="PackedScene" uid="uid://cq6kucqhq3wfw" path="res://cannon_wall.tscn" id="5_sb12i"]
+[ext_resource type="PackedScene" uid="uid://cf2m2ji7bteep" path="res://player_ship.tscn" id="6_gbhdq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbhdq"]
 texture = ExtResource("1_4ptq8")
@@ -5575,5 +5576,8 @@ rotation = 0.0
 [node name="Player" parent="." instance=ExtResource("2_1c2mv")]
 light_mask = 16
 visibility_layer = 16
-position = Vector2(1461, 1082)
+position = Vector2(1462, 1011)
 collision_mask = 76
+
+[node name="player_ship" parent="." instance=ExtResource("6_gbhdq")]
+position = Vector2(852, 781)
