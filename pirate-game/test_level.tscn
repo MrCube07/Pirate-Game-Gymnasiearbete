@@ -5580,4 +5580,5 @@ position = Vector2(1462, 1011)
 collision_mask = 76
 
 [node name="player_ship" parent="." instance=ExtResource("6_gbhdq")]
-position = Vector2(852, 781)
+position = Vector2(1181, 2182)
+rotation = -1.5708
