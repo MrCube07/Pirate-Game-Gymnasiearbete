@@ -12,22 +12,28 @@ var state = IDLE
 var is_attacking: bool = false
 var is_dead: bool = false
 
-@onready var sprite: Sprite2D = $YellowCharacter
+
+@export var stats: Stats
 @onready var camera: Camera2D = $Camera2D
+@onready var player_animations: AnimationPlayer = $player_animations
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 
 
+func _ready() -> void:
 
+	stats.initialize()
+	
 
 ######################### GAME LOOP #############################
 func _physics_process(delta: float) -> void:
+	
+	look_at(get_global_mouse_position())
 	match state:
 		IDLE:
 			_idle_state(delta)
 		WALK:
 			_walk_state(delta)
-		ATTACKING:
-			_attack_state(delta)
 		DEAD:
 			_dead_state(delta)
 			
@@ -44,7 +50,8 @@ func _movement(delta: float) -> void:
 	velocity = lerp(velocity, input * MAX_SPEED, lerp_weigth)
 	
 	move_and_slide()
-
+	
+	
 
 #################### STATE FUNKTIONS ###############################
 
@@ -52,15 +59,10 @@ func _idle_state(delta):
 	_movement(delta)
 	if velocity.length() > 0:
 		_enter_walk_state()
-		
 func _walk_state(delta):
 	_movement(delta)
 	if velocity.length() == 0:
 		_enter_idle_state()
-		
-func _attack_state(delta):
-	pass
-	
 func _dead_state(delta):
 	pass
 	
@@ -71,9 +73,6 @@ func _enter_idle_state():
 
 func _enter_walk_state():
 	state = WALK
-
-func _enter_attack_state():
-	state = ATTACKING
 
 func _enter_dead_state():
 	pass

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq6kucqhq3wfw"]
+[gd_scene load_steps=5 format=3 uid="uid://cq6kucqhq3wfw"]
 
 [ext_resource type="Texture2D" uid="uid://csixqtqpefrh4" path="res://kenney_pirate-pack/PNG/Default size/Tiles/tile_47.png" id="1_fhvrt"]
-[ext_resource type="Script" uid="uid://dp0guk1lmregj" path="res://cannon_wall.gd" id="1_qdace"]
+[ext_resource type="Script" uid="uid://dp0guk1lmregj" path="res://Scripts/cannon_wall.gd" id="1_qdace"]
+[ext_resource type="Resource" uid="uid://cc23aimvhoxh2" path="res://Recourses/cannon_wall_stats.tres" id="2_0ox5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhvrt"]
 size = Vector2(63, 42)
@@ -12,6 +13,7 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 120
 script = ExtResource("1_qdace")
+stats = ExtResource("2_0ox5w")
 
 [node name="Cannon" type="Sprite2D" parent="."]
 texture = ExtResource("1_fhvrt")
@@ -22,10 +24,10 @@ shape = SubResource("RectangleShape2D_fhvrt")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(1, -379)
-collision_mask = 56
+collision_mask = 312
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(0.499948, -14.5)
+position = Vector2(-0.500121, -33.5)
 
 [node name="CD_timer" type="Timer" parent="."]
 wait_time = 3.0

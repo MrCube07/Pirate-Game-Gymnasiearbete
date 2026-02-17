@@ -13,11 +13,24 @@ var is_sunken: bool = false
 var player: Player = null
 
 var normal_zoom = Vector2(1.0, 1.0) # Spelarens vanliga zoom
-var boat_zoom = Vector2(0.3, 0.3)
+var boat_zoom = Vector2(0.5, 0.5)
 
+var right_cooldown: bool = true
+var left_cooldown: bool = true
+
+@export var stats: Stats
+@onready var right_cd: Timer = $right_cannon_cd
+@onready var left_cd: Timer = $left_cannon_cd
+@onready var main = get_tree().current_scene
+@onready var cannon_ball = load("res://Scenes/cannon_ball.tscn")
 @onready var boat_camera: Camera2D = $Camera2D
 @onready var driving_pos:Marker2D = $player_driving_pos
 @onready var enter_area:Area2D = $EnterBoatArea
+
+
+func _ready() -> void:
+	if stats:
+		stats.initialize()
 ##################### MAIN LOOP #########################
 
 func _physics_process(delta: float) -> void:
@@ -39,8 +52,6 @@ func _movement(delta: float) -> void:
 	rotation += rotation_dir * ROTATION_SPEED * delta
 
 	# 2. Räkna ut riktning baserat på VAR båten pekar just nu
-	# Om din båt pekar åt höger i din bildfil, använd Vector2.RIGHT
-	# Om din båt pekar uppåt i din bildfil, använd Vector2.UP
 	var forward_direction = Vector2.RIGHT.rotated(rotation)
 	
 	# 3. Gas (W)
@@ -51,7 +62,7 @@ func _movement(delta: float) -> void:
 		# Friktion - sakta ner när man inte gasar
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 
-	# 4. Utför rörelsen
+	
 	move_and_slide()
 
 # Function to make the player a child of the ship and stop controlling them
@@ -111,18 +122,69 @@ func exit_boat() -> void:
 	player = null
 	state = IDLE
 	enter_area.set_deferred("monitoring", true)
+	
+func _check_shooting_input():
+	if (Input.is_action_just_pressed("Pick_Up_Item") and right_cooldown) or \
+	   (Input.is_action_just_pressed("Drop_Item") and left_cooldown):
+		state = SHOOTING
+	
+func right_shoot():
+	var instance = cannon_ball.instantiate()
+	var shoot_angle = global_rotation + PI
+	
+	instance.spawnPos = $right_muzzle.global_position
+	instance.spawnRot = shoot_angle
+	instance.dir = Vector2.UP.rotated(shoot_angle) # Skickar en riktningsvektor
+	
+	main.add_child.call_deferred(instance)
+
+func left_shoot():
+	var instance = cannon_ball.instantiate()
+	var shoot_angle = global_rotation 
+	
+	instance.spawnPos = $left_muzzle.global_position
+	instance.spawnRot = shoot_angle
+	instance.dir = Vector2.UP.rotated(shoot_angle)
+	
+	main.add_child.call_deferred(instance)
+
 ################## STATE FUNKTIONS #######################
 
 func _idle_state(delta):
-	velocity = velocity.move_toward(Vector2.ZERO, FRIC)
-	move_and_slide()
+	# Kör rörelse (så du kan börja åka eller svänga även från idle)
+	_movement(delta)
 	
+	# Om vi rör oss framåt, gå till DRIVING
+	if Input.is_action_pressed("Move_Up"):
+		state = DRIVING
+	
+	# Kolla efter skjut-input
+	_check_shooting_input()
+
 func _driving_state(delta):
 	_movement(delta)
+	
+	# Om vi stannar helt, gå till IDLE
+	if velocity.length() < 10 and not Input.is_action_pressed("Move_Up"):
+		state = IDLE
+		
+	_check_shooting_input()
 
 func _shooting_state(delta):
-	pass
-
+	# Vi tillåter rörelse även när man skjuter (valfritt, annars ta bort _movement här)
+	_movement(delta)
+	
+	if Input.is_action_just_pressed("Pick_Up_Item") and right_cooldown:
+		right_shoot()
+		right_cooldown = false
+		right_cd.start()
+		state = DRIVING # Gå tillbaka efter skott
+		
+	if Input.is_action_just_pressed("Drop_Item") and left_cooldown:
+		left_shoot()
+		left_cooldown = false
+		left_cd.start()
+		state = DRIVING # Gå tillbaka efter skott
 func _sunken_state(delta):
 	pass
 
@@ -130,17 +192,18 @@ func _sunken_state(delta):
 ############## ENTER STATE FUNKTIONS ####################
 
 func _enter_idle_state():
-	pass
+	state = IDLE
 
 func _enter_driving_state():
-	pass
+	state = DRIVING
 
 func _enter_shooting_state():
-	pass
+	state = SHOOTING
 
 func _enter_sunken_state():
 	pass
 
+##################### ENTER AREAS ############################
 
 func _on_enter_boat_area_body_entered(body: Node2D) -> void:
 	# Om vi redan är i driving state eller någon redan är i båten: ignoreras
@@ -149,3 +212,15 @@ func _on_enter_boat_area_body_entered(body: Node2D) -> void:
 	# kontrollera att det verkligen är player
 	if body is Player:
 		enter_boat(body)
+		
+		
+######################## TIMERS/COOLDOWNS ####################
+
+
+func _on_right_cannon_cd_timeout() -> void:
+	right_cooldown = true
+
+
+
+func _on_left_cannon_cd_timeout() -> void:
+	left_cooldown = true

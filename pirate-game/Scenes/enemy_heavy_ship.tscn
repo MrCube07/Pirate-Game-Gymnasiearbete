@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0hft8fgldlnk"]
+
+[ext_resource type="Script" uid="uid://coiyjajj15e6x" path="res://Scripts/enemy_heavy_ship.gd" id="1_hrk1m"]
+[ext_resource type="Texture2D" uid="uid://cc3ajpjnkpndt" path="res://Pirate/PNG/02.png" id="2_1xuqa"]
+[ext_resource type="Resource" uid="uid://crrn03l6vpkfi" path="res://Recourses/enemy_heavy_ship_stats.tres" id="2_wim3o"]
+[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="3_plsoc"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="5_585rb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p55g"]
+radius = 256.799
+height = 908.0
+
+[node name="enemy_heavy_ship" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 318
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_hrk1m")
+stats = ExtResource("2_wim3o")
+
+[node name="yellow_ship" type="Sprite2D" parent="."]
+position = Vector2(1.52588e-05, 3.05176e-05)
+rotation = 1.5708
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_1xuqa")
+
+[node name="right_cannon1" type="Sprite2D" parent="yellow_ship"]
+position = Vector2(90, 65)
+texture = ExtResource("3_plsoc")
+
+[node name="right_cannon2" type="Sprite2D" parent="yellow_ship"]
+position = Vector2(85, -55)
+texture = ExtResource("3_plsoc")
+
+[node name="left_cannon1" type="Sprite2D" parent="yellow_ship"]
+position = Vector2(-90, 65)
+rotation = -3.14159
+texture = ExtResource("3_plsoc")
+
+[node name="left_cannon2" type="Sprite2D" parent="yellow_ship"]
+position = Vector2(-85, -55)
+rotation = -3.14159
+texture = ExtResource("3_plsoc")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-459, 113, -447, -148, -254, -238, -79, -271, 142, -236, 336, -125, 447, -5, 352, 116, 154, 236, -93, 267, -277, 215)
+
+[node name="Shooting" type="Node2D" parent="."]
+
+[node name="right_muzzle1" type="Marker2D" parent="Shooting"]
+position = Vector2(-165, 346)
+
+[node name="right_muzzle2" type="Marker2D" parent="Shooting"]
+position = Vector2(138, 324)
+
+[node name="left_muzzle1" type="Marker2D" parent="Shooting"]
+position = Vector2(-161, -349)
+
+[node name="left_muzzle2" type="Marker2D" parent="Shooting"]
+position = Vector2(138, -318)
+
+[node name="right_cannon_range1" type="RayCast2D" parent="Shooting"]
+position = Vector2(-165, 290)
+target_position = Vector2(0, 1000)
+collision_mask = 296
+collide_with_areas = true
+
+[node name="right_cannon_range2" type="RayCast2D" parent="Shooting"]
+position = Vector2(138, 270)
+target_position = Vector2(0, 1000)
+collision_mask = 296
+collide_with_areas = true
+
+[node name="left_cannon_range1" type="RayCast2D" parent="Shooting"]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(-165, -290)
+rotation = -3.14159
+target_position = Vector2(0, 1000)
+collision_mask = 296
+collide_with_areas = true
+
+[node name="left_cannon_range2" type="RayCast2D" parent="Shooting"]
+position = Vector2(138, -270)
+rotation = -3.14159
+target_position = Vector2(0, 1000)
+collision_mask = 296
+collide_with_areas = true
+
+[node name="right_cd1" type="Timer" parent="Shooting"]
+wait_time = 3.0
+one_shot = true
+
+[node name="right_cd2" type="Timer" parent="Shooting"]
+wait_time = 3.0
+one_shot = true
+
+[node name="left_cd1" type="Timer" parent="Shooting"]
+wait_time = 3.0
+one_shot = true
+
+[node name="left_cd2" type="Timer" parent="Shooting"]
+wait_time = 3.0
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 500.0
+target_desired_distance = 500.0
+path_max_distance = 150.0
+simplify_path = true
+simplify_epsilon = 1.02
+avoidance_enabled = true
+radius = 100.0
+avoidance_layers = 8
+avoidance_mask = 8
+debug_enabled = true
+
+[node name="navi_cd" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_585rb")
+metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(-1.81076, 0.60307)
+shape = SubResource("CapsuleShape2D_8p55g")
+
+[connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_1_timeout"]
+[connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_timeout"]
+[connection signal="timeout" from="Shooting/right_cd2" to="." method="_on_right_cd_2_timeout"]
+[connection signal="timeout" from="Shooting/right_cd2" to="." method="_on_right_cd_timeout"]
+[connection signal="timeout" from="Shooting/left_cd1" to="." method="_on_left_cd_1_timeout"]
+[connection signal="timeout" from="Shooting/left_cd1" to="." method="_on_left_cd_timeout"]
+[connection signal="timeout" from="Shooting/left_cd2" to="." method="_on_left_cd_2_timeout"]
+[connection signal="timeout" from="Shooting/left_cd2" to="." method="_on_left_cd_timeout"]
+[connection signal="timeout" from="navi_cd" to="." method="_on_navi_cd_timeout"]

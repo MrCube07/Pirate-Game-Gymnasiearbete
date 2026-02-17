@@ -1,18 +1,29 @@
-[gd_scene load_steps=138 format=3 uid="uid://3hi2t2wd7abw"]
+[gd_scene load_steps=140 format=3 uid="uid://di5cymoe3jyll"]
 
-[ext_resource type="Script" uid="uid://cep2sgbfhe23v" path="res://Scripts/player.gd" id="1_urp6f"]
-[ext_resource type="Resource" uid="uid://b5y6vgqttqj1f" path="res://Recourses/player_stats.tres" id="2_bwjto"]
-[ext_resource type="Texture2D" uid="uid://di6h2cnq52ydx" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_character.png" id="3_606se"]
-[ext_resource type="Texture2D" uid="uid://bldfdvno2vn8" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_pole.png" id="4_u1c27"]
-[ext_resource type="Texture2D" uid="uid://meyjq654ae64" path="res://kenney_pirate-pack/PNG/Default size/Items/shield_curved.png" id="5_op7ga"]
-[ext_resource type="Texture2D" uid="uid://b1ndl8dvhu4rv" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_longsword.png" id="6_q13i1"]
-[ext_resource type="Texture2D" uid="uid://boh7twipl72b6" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_axe_double.png" id="7_pylmc"]
-[ext_resource type="Texture2D" uid="uid://cktilekesy7uk" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_bow.png" id="8_pbfsw"]
-[ext_resource type="Texture2D" uid="uid://d2337mr5regsl" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_arrow.png" id="9_5tmop"]
-[ext_resource type="Texture2D" uid="uid://cgtwynt3ia47e" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_hand.png" id="10_7ahtn"]
-[ext_resource type="Script" uid="uid://bjo8rg0so0ewl" path="res://Scripts/animation.gd" id="11_7lmhl"]
-[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="12_dx0e4"]
-[ext_resource type="Script" uid="uid://b2uq7rx1vd7ex" path="res://Scripts/hitbox.gd" id="13_jm5j8"]
+[ext_resource type="Script" uid="uid://cep2sgbfhe23v" path="res://Scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="2_7dp3o"]
+[ext_resource type="Resource" uid="uid://b5y6vgqttqj1f" path="res://Recourses/player_stats.tres" id="2_gymyn"]
+[ext_resource type="Texture2D" uid="uid://di6h2cnq52ydx" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_character.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cgtwynt3ia47e" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_hand.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://meyjq654ae64" path="res://kenney_pirate-pack/PNG/Default size/Items/shield_curved.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b1ndl8dvhu4rv" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_longsword.png" id="5_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bldfdvno2vn8" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_pole.png" id="6_b26j0"]
+[ext_resource type="Texture2D" uid="uid://boh7twipl72b6" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_axe_double.png" id="7_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://cktilekesy7uk" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_bow.png" id="8_nvl01"]
+[ext_resource type="Texture2D" uid="uid://d2337mr5regsl" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_arrow.png" id="9_ivps1"]
+[ext_resource type="Script" uid="uid://bjo8rg0so0ewl" path="res://Scripts/animation.gd" id="10_n7ghd"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="12_pu2lt"]
+[ext_resource type="Script" uid="uid://b2uq7rx1vd7ex" path="res://Scripts/hitbox.gd" id="14_7dp3o"]
+
+[sub_resource type="Resource" id="Resource_h4iuc"]
+resource_local_to_scene = true
+script = ExtResource("2_7dp3o")
+base_max_health = 1000
+base_defence = 50
+base_damage = 200
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 20.0
@@ -1479,8 +1490,8 @@ size = Vector2(84, 164)
 collision_layer = 32
 collision_mask = 92
 platform_floor_layers = 4294901760
-script = ExtResource("1_urp6f")
-stats = ExtResource("2_bwjto")
+script = ExtResource("1_onrkg")
+stats = SubResource("Resource_h4iuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1499,7 +1510,7 @@ position_smoothing_enabled = true
 [node name="Body" type="Polygon2D" parent="Polygons"]
 position = Vector2(-42, -43)
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("3_606se")
+texture = ExtResource("2_onrkg")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(30.5144, 7.47245, 47.9024, 12.9857, 57.2326, 28.6773, 50.8711, 47.3376, 33.4831, 56.2437, 13.9746, 50.3063, 4.6445, 31.646, 12.7024, 12.9857, 31.3626, 31.2219)
 uv = PackedVector2Array(30.5144, 7.47245, 47.9024, 12.9857, 57.2326, 28.6773, 50.8711, 47.3376, 33.4831, 56.2437, 13.9746, 50.3063, 4.6445, 31.646, 12.7024, 12.9857, 31.3626, 31.2219)
@@ -1512,7 +1523,7 @@ visible = false
 position = Vector2(82, -53)
 rotation = 1.37092
 scale = Vector2(2, 2)
-texture = ExtResource("4_u1c27")
+texture = ExtResource("6_b26j0")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(41, -0.5, 23, -2.5, 24, 61.5, 38, 63.5)
 uv = PackedVector2Array(41, -0.5, 23, -2.5, 24, 61.5, 38, 63.5)
@@ -1524,7 +1535,7 @@ visible = false
 position = Vector2(47, -97)
 rotation = 0.998328
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_op7ga")
+texture = ExtResource("4_sweqy")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.8019, 8.41125, -5.76379, 29.4481, 32.5533, 51.9875, 70.119, 32.4533, 30.2993, 30.9507)
 uv = PackedVector2Array(31.8019, 8.41125, -5.76379, 29.4481, 32.5533, 51.9875, 70.119, 32.4533, 30.2993, 30.9507)
@@ -1536,7 +1547,7 @@ internal_vertex_count = 1
 position = Vector2(89, -31)
 rotation = 1.43526
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("6_q13i1")
+texture = ExtResource("5_2hs0m")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(32.7356, 1.12373, 17.7093, 1.12373, 17.7093, 61.2289, 32.7356, 61.9119, 46.3958, 61.9119, 46.3958, 1.12373, 31.3696, 31.1763)
 uv = PackedVector2Array(32.7356, 1.12373, 17.7093, 1.12373, 17.7093, 61.2289, 32.7356, 61.9119, 46.3958, 61.9119, 46.3958, 1.12373, 31.3696, 31.1763)
@@ -1549,7 +1560,7 @@ visible = false
 position = Vector2(111, 61)
 rotation = 2.85885
 scale = Vector2(2, 2)
-texture = ExtResource("7_pylmc")
+texture = ExtResource("7_n7ghd")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(57.2246, -0.647682, 6.68167, -2.69672, 5.99866, 28.7219, 21.025, 32.137, 25.8061, 61.5065, 36.0512, 60.8235, 38.7833, 30.7709, 53.8096, 35.552, 29.2211, 15.7446)
 uv = PackedVector2Array(58.5907, 3.4504, 8.0477, 1.40136, 7.36468, 32.82, 22.391, 36.235, 27.1721, 65.6046, 37.4173, 64.9216, 40.1493, 34.869, 55.1756, 39.6501, 30.5872, 19.8427)
@@ -1561,7 +1572,7 @@ internal_vertex_count = 1
 visible = false
 position = Vector2(-22, -44)
 rotation = -0.427606
-texture = ExtResource("8_pbfsw")
+texture = ExtResource("8_nvl01")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(-6, 16.5, 69, 16.5, 69, 44.5, -8, 46.5)
 uv = PackedVector2Array(-6, 16.5, 69, 16.5, 69, 44.5, -8, 46.5)
@@ -1571,7 +1582,7 @@ bones = ["Body", PackedFloat32Array(0, 0, 0, 0), "Body/LeftArm", PackedFloat32Ar
 [node name="Arrow" type="Polygon2D" parent="Polygons/Bow"]
 position = Vector2(71.8633, 56.9268)
 rotation = 1.77605
-texture = ExtResource("9_5tmop")
+texture = ExtResource("9_ivps1")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(23, 6.5, 42, 4.5, 45, 59.5, 23, 59.5)
 uv = PackedVector2Array(23, 6.5, 42, 4.5, 45, 59.5, 23, 59.5)
@@ -1582,7 +1593,7 @@ bones = ["Body", PackedFloat32Array(0, 0, 0, 0), "Body/LeftArm", PackedFloat32Ar
 position = Vector2(-20, -65)
 rotation = -0.0122561
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("10_7ahtn")
+texture = ExtResource("3_i3pqv")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
 uv = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
@@ -1594,7 +1605,7 @@ internal_vertex_count = 1
 position = Vector2(-31, -12)
 rotation = -0.186868
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("10_7ahtn")
+texture = ExtResource("3_i3pqv")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
 uv = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
@@ -1667,7 +1678,7 @@ parameters/SwordWalking/blend_position = Vector2(0, 0)
 parameters/Walking/blend_position = Vector2(0, 0)
 
 [node name="Animation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("11_7lmhl")
+script = ExtResource("10_n7ghd")
 animation_tree = NodePath("../AnimationTree")
 
 [node name="Cd" type="Timer" parent="Animation"]
@@ -1677,7 +1688,7 @@ one_shot = true
 collision_layer = 32
 collision_mask = 0
 monitoring = false
-script = ExtResource("12_dx0e4")
+script = ExtResource("12_pu2lt")
 metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -1687,8 +1698,8 @@ shape = SubResource("CircleShape2D_ukyrk")
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 84
-script = ExtResource("13_jm5j8")
-attacker_stats = ExtResource("2_bwjto")
+script = ExtResource("14_7dp3o")
+attacker_stats = ExtResource("2_gymyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(33, -1)

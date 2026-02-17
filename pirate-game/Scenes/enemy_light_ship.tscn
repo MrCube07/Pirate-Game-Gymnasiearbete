@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp7crl4sxk446"]
+
+[ext_resource type="Script" uid="uid://dr3jku0j7dbf0" path="res://Scripts/enemy_light_ship.gd" id="1_yguxu"]
+[ext_resource type="Resource" uid="uid://d04ajk85abslf" path="res://Recourses/enemy_light_ship_stats.tres" id="2_cepcu"]
+[ext_resource type="Texture2D" uid="uid://c5ksju8m6f4p1" path="res://Pirate/PNG/05.png" id="2_p30cx"]
+[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="3_cepcu"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="5_cepcu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7adtp"]
+radius = 274.0
+height = 594.0
+
+[node name="enemy_light_ship" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 318
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_yguxu")
+stats = ExtResource("2_cepcu")
+
+[node name="grey_ship" type="Sprite2D" parent="."]
+position = Vector2(3, 5)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_p30cx")
+
+[node name="right_cannon" type="Sprite2D" parent="grey_ship"]
+position = Vector2(87, 60)
+texture = ExtResource("3_cepcu")
+
+[node name="left_cannon" type="Sprite2D" parent="grey_ship"]
+position = Vector2(-89, 60)
+rotation = 3.14159
+texture = ExtResource("3_cepcu")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-266, 70, -176, 129, -66, 166, 74, 155, 189, 96, 276, 4, 161, -105, 57, -150, -63, -154, -172, -128, -264, -86)
+
+[node name="right_muzzle" type="Marker2D" parent="."]
+position = Vector2(-88, 175)
+
+[node name="left_muzzle" type="Marker2D" parent="."]
+position = Vector2(-88, -175)
+
+[node name="right_cannon_range" type="RayCast2D" parent="."]
+position = Vector2(-88, 160)
+target_position = Vector2(0, 750)
+collision_mask = 264
+collide_with_areas = true
+
+[node name="left_cannon_range" type="RayCast2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(-88, -160)
+rotation = -3.14159
+target_position = Vector2(0, 750)
+collision_mask = 264
+collide_with_areas = true
+
+[node name="right_cd" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="left_cd" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 500.0
+target_desired_distance = 500.0
+path_max_distance = 150.0
+simplify_path = true
+simplify_epsilon = 1.02
+avoidance_enabled = true
+radius = 100.0
+avoidance_layers = 8
+avoidance_mask = 8
+debug_enabled = true
+
+[node name="pathfind_cd" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_cepcu")
+metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-13, 5)
+scale = Vector2(1, 0.56)
+shape = SubResource("CapsuleShape2D_7adtp")
+
+[connection signal="timeout" from="right_cd" to="." method="_on_right_cd_timeout"]
+[connection signal="timeout" from="left_cd" to="." method="_on_left_cd_timeout"]
+[connection signal="timeout" from="pathfind_cd" to="." method="_on_pathfind_cd_timeout"]
