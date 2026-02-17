@@ -5613,5 +5613,3 @@ player = NodePath("../player_ship")
 position = Vector2(1274, 911)
 stats = SubResource("Resource_sw8nc")
 player = NodePath("../Player")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

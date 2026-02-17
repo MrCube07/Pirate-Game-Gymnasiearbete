@@ -42,10 +42,8 @@ func _ready():
 	if stats:
 		stats.initialize()
 	startup.start()
-
 	
 func _physics_process(delta: float) -> void:
-	print(stats.health)
 	match state:
 		IDLE:
 			_idle_state(delta)
