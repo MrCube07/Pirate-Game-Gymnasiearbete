@@ -13,10 +13,12 @@ var is_attacking: bool = false
 var is_dead: bool = false
 var combat_range: int = 75
 var detection_range: int = 500
+var can_die: bool = false
 
 @export var stats: Stats
 @export var player: Node2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var startup: Timer = $Startup
 
 
 
@@ -25,12 +27,12 @@ func _ready():
 	makepath()
 	if stats:
 		stats.initialize()
-	await stats.health > 0
+	startup.start()
+	
 	
 
 ######################### GAME LOOP #############################
 func _physics_process(delta: float) -> void:
-	print(stats.health)
 	match state:
 		IDLE:
 			_idle_state(delta)
@@ -80,7 +82,6 @@ func _idle_state(delta):
 		_enter_walk_state()
 		
 func _walk_state(delta):
-	var can_die = true if stats.health >= 0 else false
 	var dist_to_player = global_position.distance_to(player.global_position)
 	_movement(delta)
 	if dist_to_player + 100 < combat_range:
@@ -107,3 +108,7 @@ func _enter_dead_state():
 
 func _on_navigation_cd_timeout() -> void:
 	makepath()
+
+
+func _on_startup_timeout() -> void:
+	can_die = true

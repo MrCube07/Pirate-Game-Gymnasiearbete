@@ -5,7 +5,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_x62vt")
-base_max_health = 50
+base_max_health = 400
 base_defence = 5
 base_damage = 0
 experience = 0

@@ -6,18 +6,20 @@ class_name CannonWall
 enum{IDLE, ATTACKING, CD, BROKEN}
 
 var state = IDLE
-var hp:int = 100
 var cooldown: bool = true
+var can_die: bool = false
 
 @export var stats: Stats
 @onready var main = get_tree().current_scene
 @onready var cannon_ball = load("res://Scenes/cannon_ball.tscn")
 @onready var sight: RayCast2D = $RayCast2D
 @onready var cd: Timer = $CD_timer
+@onready var startup: Timer = $Startup
 
 func _ready() -> void:
 	if stats:
 		stats.initialize()
+	startup.start()
 ##################### GENERAL HELP FUNKTIONS ###################
 func shoot():
 	var instance = cannon_ball.instantiate()
@@ -27,8 +29,6 @@ func shoot():
 	instance.spawnPos = $Muzzle.global_position
 	instance.spawnRot = rot
 	
-
-	# Vi skapar riktningsvektorn baserat på rotationen
 	instance.dir = Vector2.UP.rotated(rot) 
 	
 
@@ -52,12 +52,14 @@ func _physics_process(delta: float) -> void:
 func _idle_state(delta):
 	if sight.is_colliding() and cooldown == true:
 		_enter_attacking_state()
-		
+	
+	if stats.health <= 0 and can_die:
+		_enter_broken_state()
 func _attacking_state(delta):
 	_idle_state(delta)
 	
 func _broken_state(delta):
-	pass
+	set_physics_process(false)
 	
 	
 ##################### ENTER STATE FUNKTIONS #####################
@@ -70,8 +72,15 @@ func _enter_attacking_state():
 	shoot()
 	cd.start()
 	cooldown = false
+
+func _enter_broken_state():
+	state = BROKEN
 	
 ##################### SAIGNALS #################################
 
 func _on_cd_timer_timeout() -> void:
 	cooldown = true
+
+
+func _on_startup_timeout() -> void:
+	can_die = true

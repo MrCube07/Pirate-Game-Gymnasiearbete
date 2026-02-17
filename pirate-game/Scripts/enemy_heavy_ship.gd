@@ -16,6 +16,7 @@ var left_cooldown1: bool = true
 var right_cooldown2: bool = true
 var left_cooldown2: bool = true
 var cannon: String = ""
+var can_die: bool = false
 
 @export var stats: Stats
 @export var combat_range: int = 1500
@@ -32,6 +33,7 @@ var cannon: String = ""
 @onready var left_cd1: Timer = $Shooting/left_cd1
 @onready var right_cd2: Timer = $Shooting/right_cd2
 @onready var left_cd2: Timer = $Shooting/left_cd2
+@onready var startup: Timer = $startup
 
 ##################### MAIN LOOP #########################
 func _ready():
@@ -39,9 +41,11 @@ func _ready():
 	makepath()
 	if stats:
 		stats.initialize()
+	startup.start()
 
 	
 func _physics_process(delta: float) -> void:
+	print(stats.health)
 	match state:
 		IDLE:
 			_idle_state(delta)
@@ -168,6 +172,9 @@ func _idle_state(delta):
 	# 4. Movement: Stop entirely
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
+	
+	if stats.health <= 0 and can_die:
+		_enter_sunken_state()
 
 
 func _driving_state(delta):
@@ -183,7 +190,8 @@ func _driving_state(delta):
 	# 2. Transition: Stop if player is totally out of detection range (optional)
 	if dist_to_player > detection_range:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
-
+	if stats.health <= 0 and can_die:
+		_enter_sunken_state()
 
 func _shooting_state(delta):
 	# Keep slowing down while shooting
@@ -211,7 +219,7 @@ func _shooting_state(delta):
 	_enter_idle_state()
 
 func _sunken_state(delta):
-	pass
+	set_physics_process(false)
 	
 	
 #################### ENTER STATE FUNKTIONS ##############
@@ -248,3 +256,7 @@ func _on_left_cd_1_timeout() -> void:
 	
 func _on_left_cd_2_timeout() -> void:
 	left_cooldown2 = true
+
+
+func _on_startup_timeout() -> void:
+	can_die = true

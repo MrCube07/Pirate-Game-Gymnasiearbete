@@ -11,8 +11,8 @@ extends Area2D
 # NYTT: Vi hämtar våra Hitbox-barn. 
 # ImpactHitbox sköter skadan när kulan träffar ett skepp.
 # ExplosionHitbox sköter skadan när den sprängs.
-@onready var impact_hitbox: Hitbox = $ImpactHitbox
-@onready var explosion_hitbox: Hitbox = $ExplosionHitbox
+@onready var impact_hitbox: Hitbox = $impact_hitbox
+@onready var explosion_hitbox: Hitbox = $ExplosionRadius
 
 var dir: Vector2 = Vector2.ZERO
 var spawnPos: Vector2
@@ -34,15 +34,12 @@ func _ready() -> void:
 		explosion_hitbox.monitorable = false
 		explosion_hitbox.is_explosion = true # Viktigt för resistens-uträkningen!
 		# Sätt skada om du inte satt det i editorn
-		if explosion_hitbox.damage_override < 0:
-			explosion_hitbox.damage_override = 50 
+
 
 	# SETUP FÖR IMPACT HITBOX (Ska vara igång direkt)
 	if impact_hitbox:
 		impact_hitbox.monitoring = true # Scannar efter hurtboxes
 		impact_hitbox.monitorable = false
-		if impact_hitbox.damage_override < 0:
-			impact_hitbox.damage_override = 20
 			
 		
 

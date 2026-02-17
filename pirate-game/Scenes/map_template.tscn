@@ -5799,7 +5799,7 @@ sources/0 = SubResource("TileSetAtlasSource_qs4ob")
 [sub_resource type="Resource" id="Resource_pjdir"]
 resource_local_to_scene = true
 script = ExtResource("5_vk10v")
-base_max_health = 50
+base_max_health = 500
 base_defence = 100
 base_damage = 100
 experience = 0
@@ -5809,7 +5809,7 @@ metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 [sub_resource type="Resource" id="Resource_3nynw"]
 resource_local_to_scene = true
 script = ExtResource("5_vk10v")
-base_max_health = 50
+base_max_health = 500
 base_defence = 100
 base_damage = 100
 experience = 0

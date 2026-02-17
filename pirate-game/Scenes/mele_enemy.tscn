@@ -1421,7 +1421,7 @@ advance_expression = "idle"
 switch_mode = 2
 advance_mode = 2
 advance_expression = "velocity
-!attacking"
+"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ivps1"]
 advance_mode = 2
@@ -1634,13 +1634,13 @@ path_desired_distance = 500.0
 target_desired_distance = 500.0
 path_max_distance = 150.0
 navigation_layers = 2
+path_postprocessing = 1
 simplify_path = true
 simplify_epsilon = 1.02
 avoidance_enabled = true
 radius = 100.0
 avoidance_layers = 4
 avoidance_mask = 8
-debug_enabled = true
 
 [node name="navigation_cd" type="Timer" parent="."]
 wait_time = 0.3
@@ -1668,6 +1668,10 @@ position = Vector2(33, -1)
 shape = SubResource("RectangleShape2D_2x6gk")
 disabled = true
 
+[node name="Startup" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Animation/Cd" to="Animation" method="_on_cd_timeout"]
 [connection signal="body_entered" from="Animation/attack_detection" to="Animation" method="_on_attack_detection_body_entered"]
 [connection signal="timeout" from="navigation_cd" to="." method="_on_navigation_cd_timeout"]
+[connection signal="timeout" from="Startup" to="." method="_on_startup_timeout"]

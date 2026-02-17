@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq6kucqhq3wfw"]
+[gd_scene load_steps=6 format=3 uid="uid://cq6kucqhq3wfw"]
 
 [ext_resource type="Texture2D" uid="uid://csixqtqpefrh4" path="res://kenney_pirate-pack/PNG/Default size/Tiles/tile_47.png" id="1_fhvrt"]
 [ext_resource type="Script" uid="uid://dp0guk1lmregj" path="res://Scripts/cannon_wall.gd" id="1_qdace"]
 [ext_resource type="Resource" uid="uid://cc23aimvhoxh2" path="res://Recourses/cannon_wall_stats.tres" id="2_0ox5w"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="4_80y12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhvrt"]
 size = Vector2(63, 42)
@@ -33,4 +34,18 @@ position = Vector2(-0.500121, -33.5)
 wait_time = 3.0
 one_shot = true
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_80y12")
+metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fhvrt")
+
+[node name="Startup" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="CD_timer" to="." method="_on_cd_timer_timeout"]
+[connection signal="timeout" from="Startup" to="." method="_on_startup_timeout"]

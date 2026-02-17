@@ -18,6 +18,8 @@ var boat_zoom = Vector2(0.5, 0.5)
 var right_cooldown: bool = true
 var left_cooldown: bool = true
 
+var on_board = false
+
 @export var stats: Stats
 @onready var right_cd: Timer = $right_cannon_cd
 @onready var left_cd: Timer = $left_cannon_cd
@@ -93,6 +95,7 @@ func enter_boat(p: Player) -> void:
 	player.visible = false # Dölj gubben när han är "i" båten om du vill
 	
 	enter_area.set_deferred("monitoring", false)
+	on_board = true
 
 
 func exit_boat() -> void:
@@ -151,15 +154,16 @@ func left_shoot():
 ################## STATE FUNKTIONS #######################
 
 func _idle_state(delta):
-	# Kör rörelse (så du kan börja åka eller svänga även från idle)
-	_movement(delta)
+	if on_board:
+		# Kör rörelse (så du kan börja åka eller svänga även från idle)
+		_movement(delta)
 	
-	# Om vi rör oss framåt, gå till DRIVING
-	if Input.is_action_pressed("Move_Up"):
-		state = DRIVING
+		# Om vi rör oss framåt, gå till DRIVING
+		if Input.is_action_pressed("Move_Up"):
+			state = DRIVING
 	
-	# Kolla efter skjut-input
-	_check_shooting_input()
+		# Kolla efter skjut-input
+		_check_shooting_input()
 
 func _driving_state(delta):
 	_movement(delta)

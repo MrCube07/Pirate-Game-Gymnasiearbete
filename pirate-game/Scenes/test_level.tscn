@@ -5508,6 +5508,26 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 120
 sources/0 = SubResource("TileSetAtlasSource_lnbra")
 
+[sub_resource type="Resource" id="Resource_1rqgg"]
+resource_local_to_scene = true
+script = ExtResource("5_3ihge")
+base_max_health = 400
+base_defence = 100
+base_damage = 100
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_mwmob"]
+resource_local_to_scene = true
+script = ExtResource("5_3ihge")
+base_max_health = 400
+base_defence = 100
+base_damage = 100
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
 [sub_resource type="Resource" id="Resource_akkqd"]
 resource_local_to_scene = true
 script = ExtResource("5_3ihge")
@@ -5523,26 +5543,6 @@ resource_local_to_scene = true
 script = ExtResource("5_3ihge")
 base_max_health = 500
 base_defence = 35
-base_damage = 100
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_1rqgg"]
-resource_local_to_scene = true
-script = ExtResource("5_3ihge")
-base_max_health = 50
-base_defence = 100
-base_damage = 100
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_mwmob"]
-resource_local_to_scene = true
-script = ExtResource("5_3ihge")
-base_max_health = 50
-base_defence = 100
 base_damage = 100
 experience = 0
 explosion_resistance = 0.0
@@ -5586,14 +5586,6 @@ tile_set = SubResource("TileSet_lowby")
 
 [node name="imported_scenes" type="Node2D" parent="."]
 
-[node name="Player" parent="imported_scenes" instance=ExtResource("9_3ihge")]
-position = Vector2(1433, 1224)
-stats = SubResource("Resource_akkqd")
-
-[node name="player_ship" parent="imported_scenes" instance=ExtResource("5_1rqgg")]
-position = Vector2(1646, 2616)
-stats = SubResource("Resource_8v7by")
-
 [node name="Cannon_Wall" parent="imported_scenes" instance=ExtResource("6_mwmob")]
 position = Vector2(1728, 832)
 rotation = 0.0
@@ -5603,6 +5595,14 @@ stats = SubResource("Resource_1rqgg")
 position = Vector2(1859, 1286)
 rotation = -3.14159
 stats = SubResource("Resource_mwmob")
+
+[node name="Player" parent="imported_scenes" instance=ExtResource("9_3ihge")]
+position = Vector2(1433, 1224)
+stats = SubResource("Resource_akkqd")
+
+[node name="player_ship" parent="imported_scenes" instance=ExtResource("5_1rqgg")]
+position = Vector2(1545, 1789)
+stats = SubResource("Resource_8v7by")
 
 [node name="enemy_heavy_ship" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_so54a")]
 position = Vector2(3617, 2304)

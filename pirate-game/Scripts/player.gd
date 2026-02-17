@@ -21,7 +21,6 @@ var is_dead: bool = false
 
 
 func _ready() -> void:
-
 	stats.initialize()
 	
 

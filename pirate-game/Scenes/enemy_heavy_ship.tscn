@@ -129,6 +129,8 @@ metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
 scale = Vector2(-1.81076, 0.60307)
 shape = SubResource("CapsuleShape2D_8p55g")
 
+[node name="startup" type="Timer" parent="."]
+
 [connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_1_timeout"]
 [connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_timeout"]
 [connection signal="timeout" from="Shooting/right_cd2" to="." method="_on_right_cd_2_timeout"]
@@ -138,3 +140,4 @@ shape = SubResource("CapsuleShape2D_8p55g")
 [connection signal="timeout" from="Shooting/left_cd2" to="." method="_on_left_cd_2_timeout"]
 [connection signal="timeout" from="Shooting/left_cd2" to="." method="_on_left_cd_timeout"]
 [connection signal="timeout" from="navi_cd" to="." method="_on_navi_cd_timeout"]
+[connection signal="timeout" from="startup" to="." method="_on_startup_timeout"]
