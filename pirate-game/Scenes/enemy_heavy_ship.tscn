@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0hft8fgldlnk"]
+[gd_scene load_steps=12 format=3 uid="uid://c0hft8fgldlnk"]
 
 [ext_resource type="Script" uid="uid://coiyjajj15e6x" path="res://Scripts/enemy_heavy_ship.gd" id="1_hrk1m"]
 [ext_resource type="Texture2D" uid="uid://cc3ajpjnkpndt" path="res://Pirate/PNG/02.png" id="2_1xuqa"]
@@ -9,6 +9,40 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p55g"]
 radius = 256.799
 height = 908.0
+
+[sub_resource type="Gradient" id="Gradient_585rb"]
+offsets = PackedFloat32Array(0, 0.226027, 0.979452, 1)
+colors = PackedColorArray(0.972549, 0.960784, 0, 1, 0.972549, 0.752941, 0, 1, 0.972549, 0.184314, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8p55g"]
+gradient = SubResource("Gradient_585rb")
+
+[sub_resource type="Curve" id="Curve_tq2yd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.216667), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4se7j"]
+curve = SubResource("Curve_tq2yd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oobny"]
+particle_flag_disable_z = true
+spread = 147.674
+initial_velocity_min = 116.79
+initial_velocity_max = 222.63
+gravity = Vector3(5, 5, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 18.25
+tangential_accel_min = -100.0
+tangential_accel_max = 86.13
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_4se7j")
+scale_over_velocity_min = 658.9
+scale_over_velocity_max = 892.48
+color = Color(1, 1, 0.403922, 1)
+color_ramp = SubResource("GradientTexture1D_8p55g")
+turbulence_enabled = true
+turbulence_noise_strength = 13.34
 
 [node name="enemy_heavy_ship" type="CharacterBody2D"]
 collision_layer = 8
@@ -62,7 +96,7 @@ position = Vector2(138, -318)
 [node name="right_cannon_range1" type="RayCast2D" parent="Shooting"]
 position = Vector2(-165, 290)
 target_position = Vector2(0, 1000)
-collision_mask = 296
+collision_mask = 288
 collide_with_areas = true
 
 [node name="right_cannon_range2" type="RayCast2D" parent="Shooting"]
@@ -113,7 +147,6 @@ avoidance_enabled = true
 radius = 100.0
 avoidance_layers = 8
 avoidance_mask = 8
-debug_enabled = true
 
 [node name="navi_cd" type="Timer" parent="."]
 wait_time = 0.5
@@ -130,6 +163,26 @@ scale = Vector2(-1.81076, 0.60307)
 shape = SubResource("CapsuleShape2D_8p55g")
 
 [node name="startup" type="Timer" parent="."]
+
+[node name="particles" type="Node2D" parent="."]
+
+[node name="death_particles" type="GPUParticles2D" parent="particles"]
+position = Vector2(115, -4.76837e-07)
+rotation = -1.63208
+scale = Vector2(2, 2)
+emitting = false
+amount = 500
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_oobny")
+
+[node name="death_particles2" type="GPUParticles2D" parent="particles"]
+position = Vector2(-169, 0)
+rotation = -3.12221
+scale = Vector2(2, 2)
+emitting = false
+amount = 500
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_oobny")
 
 [connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_1_timeout"]
 [connection signal="timeout" from="Shooting/right_cd1" to="." method="_on_right_cd_timeout"]

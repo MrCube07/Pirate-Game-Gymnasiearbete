@@ -85,12 +85,6 @@ func recalculate_stats() -> void:
 	else:
 		current_max_health = base_max_health
 	
-	# Säkerhetskoll så vi inte kraschar om kurvor saknas
-	if STAT_CURVES.has(BuffableStats.MAX_HEALTH):
-		current_max_health = int(base_max_health * STAT_CURVES[BuffableStats.MAX_HEALTH].sample(stat_sample_pos))
-	else:
-		current_max_health = base_max_health # Fallback
-
 	if STAT_CURVES.has(BuffableStats.DAMAGE):
 		current_damage = int(base_damage * STAT_CURVES[BuffableStats.DAMAGE].sample(stat_sample_pos))
 	else:

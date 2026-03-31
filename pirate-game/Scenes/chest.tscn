@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://tsst1s4ru8bh"]
+
+[ext_resource type="Script" uid="uid://d22f1tbkejl0m" path="res://chest.gd" id="1_cjfl1"]
+[ext_resource type="Texture2D" uid="uid://cqpr606p10te" path="res://Pirate/PNG/07.png" id="2_bagqn"]
+[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="2_pmguq"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="4_dq33m"]
+
+[sub_resource type="Resource" id="Resource_j6qf6"]
+script = ExtResource("2_pmguq")
+base_max_health = 1
+base_defence = 1
+base_damage = 1
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmguq"]
+size = Vector2(140, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25pds"]
+size = Vector2(81, 135)
+
+[node name="chest" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_cjfl1")
+stats = SubResource("Resource_j6qf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bagqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 0.00262394
+shape = SubResource("RectangleShape2D_pmguq")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+script = ExtResource("4_dq33m")
+metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_25pds")
+debug_color = Color(0.964133, 0.15271, 0.293453, 0.42)
+
+[node name="startup" type="Timer" parent="."]
+
+[connection signal="timeout" from="startup" to="." method="_on_startup_timeout"]

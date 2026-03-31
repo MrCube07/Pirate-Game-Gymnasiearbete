@@ -34,6 +34,8 @@ var can_die: bool = false
 @onready var right_cd2: Timer = $Shooting/right_cd2
 @onready var left_cd2: Timer = $Shooting/left_cd2
 @onready var startup: Timer = $startup
+@onready var particles1: Node2D = $particles/death_particles
+@onready var particles2: Node2D = $particles/death_particles2
 
 ##################### MAIN LOOP #########################
 func _ready():
@@ -218,6 +220,10 @@ func _shooting_state(delta):
 
 func _sunken_state(delta):
 	set_physics_process(false)
+	particles1.Emitting = true
+	particles2.Emitting = true
+	
+	
 	
 	
 #################### ENTER STATE FUNKTIONS ##############

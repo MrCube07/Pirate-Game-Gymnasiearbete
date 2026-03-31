@@ -9,5 +9,5 @@ base_max_health = 500
 base_defence = 35
 base_damage = 10
 experience = 0
-faction = 1
+explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"

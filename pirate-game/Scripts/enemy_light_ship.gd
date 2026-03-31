@@ -10,6 +10,7 @@ enum{ IDLE, DRIVING, SHOOTING, SUNKEN}
 var state = DRIVING
 var is_sunken: bool = false
 var in_range = false
+var can_die = false
 
 var right_cooldown: bool = true
 var left_cooldown: bool = true
@@ -26,6 +27,9 @@ var cannon: String = ""
 @onready var left_sight: RayCast2D = $left_cannon_range
 @onready var right_cd: Timer = $right_cd
 @onready var left_cd: Timer = $left_cd
+@onready var startup: Timer = $startup
+@onready var death_particles: GPUParticles2D = $death_particles
+
 
 ##################### MAIN LOOP #########################
 func _ready():
@@ -33,6 +37,7 @@ func _ready():
 	makepath()
 	if stats:
 		stats.initialize()
+	startup.start()
 
 	
 func _physics_process(delta: float) -> void:
@@ -135,6 +140,9 @@ func _idle_state(delta):
 	# 4. Movement: Stop entirely
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
+	
+	if stats.health <= 0 and can_die:
+		_enter_sunken_state()
 
 
 func _driving_state(delta):
@@ -150,6 +158,9 @@ func _driving_state(delta):
 	# 2. Transition: Stop if player is totally out of detection range (optional)
 	if dist_to_player > detection_range:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
+	
+	if stats.health <= 0 and can_die:
+		_enter_sunken_state()
 
 
 func _shooting_state(delta):
@@ -170,7 +181,8 @@ func _shooting_state(delta):
 	_enter_idle_state()
 
 func _sunken_state(delta):
-	pass
+	set_physics_process(false)
+	death_particles.emitting = true
 	
 	
 #################### ENTER STATE FUNKTIONS ##############
@@ -200,3 +212,7 @@ func _on_right_cd_timeout() -> void:
 
 func _on_left_cd_timeout() -> void:
 	left_cooldown = true
+
+
+func _on_startup_timeout() -> void:
+	can_die = true

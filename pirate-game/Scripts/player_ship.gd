@@ -6,11 +6,11 @@ const ACC:int = 100
 const FRIC:int = 50
 const ROTATION_SPEED: float = 0.5
 
-enum{ IDLE, DRIVING, SHOOTING, SUNKEN}
+enum{ IDLE, DRIVING, SHOOTING}
 
 var state = IDLE
 var is_sunken: bool = false
-var player: Player = null
+
 
 var normal_zoom = Vector2(1.0, 1.0) # Spelarens vanliga zoom
 var boat_zoom = Vector2(0.5, 0.5)
@@ -19,6 +19,13 @@ var right_cooldown: bool = true
 var left_cooldown: bool = true
 
 var on_board = false
+var player_at_dock: CharacterBody2D = null
+var can_die:bool = false
+
+@export var player: Player
+@export var boat_entry: CanvasLayer
+
+
 
 @export var stats: Stats
 @onready var right_cd: Timer = $right_cannon_cd
@@ -28,14 +35,21 @@ var on_board = false
 @onready var boat_camera: Camera2D = $Camera2D
 @onready var driving_pos:Marker2D = $player_driving_pos
 @onready var enter_area:Area2D = $EnterBoatArea
-
-
-func _ready() -> void:
-	if stats:
-		stats.initialize()
+@onready var exit_pos: Marker2D = $player_exit_pos
+@onready var startup: Timer = $startup
 ##################### MAIN LOOP #########################
+func _ready():
+	stats.initialize()
+	startup.start()
 
 func _physics_process(delta: float) -> void:
+	if can_die and stats.health <= 0 and on_board:
+		get_tree().change_scene_to_file("res://Scenes/defeat_screen.tscn")
+	elif can_die and stats.health <= 0:
+		set_physics_process(false)
+		boat_entry.visible = false
+		enter_area.monitoring = false
+	
 	match state:
 		IDLE:
 			_idle_state(delta)
@@ -43,9 +57,7 @@ func _physics_process(delta: float) -> void:
 			_driving_state(delta)
 		SHOOTING:
 			_shooting_state(delta)
-		SUNKEN:
-			_sunken_state(delta)
-			
+
 ################### GENERAL FUNKTIONS ####################
 
 func _movement(delta: float) -> void:
@@ -68,61 +80,61 @@ func _movement(delta: float) -> void:
 	move_and_slide()
 
 # Function to make the player a child of the ship and stop controlling them
-func enter_boat(p: Player) -> void:
-	if player != null: return
+func enter_boat() -> void:
+	# Om vi redan kör, eller om ingen spelare är i närheten, gör inget
+	if on_board or player_at_dock == null: return
 	
-	player = p
+	# Sätt den faktiska player-variabeln till den som stod vid båten
+	player = player_at_dock
 	state = DRIVING
+	on_board = true
 
-	# 1. Stäng av kollision och reparent
+	# 1. Stäng av kollision
 	player.get_node("CollisionShape2D").set_deferred("disabled", true)
-	player.reparent(self) 
+	if player.has_node("Hurtbox"):
+		player.get_node("Hurtbox").set_deferred("monitoring", false)
 	
-	# 2. Positionera på Marker2D
+	# 2. Flytta in spelaren i båtens hierarki
+	player.reparent(self)
 	player.position = driving_pos.position
 	player.rotation = 0
+	player.velocity = Vector2.ZERO # Stoppa all rörelse
 	
 	# 3. Kamerahantering
-	boat_camera.make_current() # Växla till båtens kamera
-	
-	# Skapa en mjuk zoom-effekt (tar 0.8 sekunder)
+	boat_camera.make_current()
 	var tween = create_tween()
 	tween.tween_property(boat_camera, "zoom", boat_zoom, 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
-	# 4. Stäng av spelarens egen logik
+	# 4. Inaktivera spelar-logik
 	player.set_physics_process(false)
-	player.set_process_input(false)
-	player.visible = false # Dölj gubben när han är "i" båten om du vill
+	player.set_process_unhandled_input(false) # Bättre än set_process_input
+	player.visible = false 
 	
 	enter_area.set_deferred("monitoring", false)
-	on_board = true
-
 
 func exit_boat() -> void:
 	if player == null: return
 	
-	# 1. Återställ kameran till spelarens egna kamera
-	# Vi antar att din Player-scen har en Camera2D
-	var player_cam = player.get_node_or_null("Camera2D")
-	if player_cam:
-		player_cam.make_current()
-		# Om du vill återställa zoomen på spelarens kamera direkt:
-		player_cam.zoom = normal_zoom
+
+	player.reparent(get_parent())
+
+	var player_cam = player.get_node("Camera2D")
 	
-	# 2. Flytta tillbaka spelaren till mappen (leveln)
-	var level = get_parent()
-	player.reparent(level)
-	
-	# 3. Aktivera spelaren igen
+	player_cam.make_current()
+
 	player.get_node("CollisionShape2D").set_deferred("disabled", false)
+	if player.has_node("Hurtbox"):
+		player.get_node("Hurtbox").set_deferred("monitoring", true)
+	
 	player.set_physics_process(true)
-	player.set_process_input(true)
+	player.set_process_unhandled_input(true)
 	player.visible = true
 	
-	# 4. Sätt spelaren precis bredvid båten
-	player.global_position = global_position + Vector2(60, 0).rotated(rotation)
+	# 4. Placera spelaren utanför båten
+	player.global_position = exit_pos.global_position
 	
-	player = null
+	on_board = false
+	player = null # Nollställ efter vi har klivit ur
 	state = IDLE
 	enter_area.set_deferred("monitoring", true)
 	
@@ -150,20 +162,34 @@ func left_shoot():
 	instance.dir = Vector2.UP.rotated(shoot_angle)
 	
 	main.add_child.call_deferred(instance)
+	
+func toggle_vis(objekt):
+	if objekt.visible:
+		objekt.visible = false
+	else:
+		objekt.visible = true
 
 ################## STATE FUNKTIONS #######################
 
 func _idle_state(delta):
 	if on_board:
+		boat_entry.visible = true
 		# Kör rörelse (så du kan börja åka eller svänga även från idle)
 		_movement(delta)
 	
 		# Om vi rör oss framåt, gå till DRIVING
 		if Input.is_action_pressed("Move_Up"):
 			state = DRIVING
+		
+		if velocity.length() < 10 and Input.is_action_just_pressed("Pick_Up_Item"):
+			exit_boat()
 	
 		# Kolla efter skjut-input
 		_check_shooting_input()
+	if boat_entry.visible == true and Input.is_action_just_pressed("Pick_Up_Item"):
+		enter_boat()
+		
+
 
 func _driving_state(delta):
 	_movement(delta)
@@ -173,6 +199,8 @@ func _driving_state(delta):
 		state = IDLE
 		
 	_check_shooting_input()
+	
+
 
 func _shooting_state(delta):
 	# Vi tillåter rörelse även när man skjuter (valfritt, annars ta bort _movement här)
@@ -189,8 +217,7 @@ func _shooting_state(delta):
 		left_cooldown = false
 		left_cd.start()
 		state = DRIVING # Gå tillbaka efter skott
-func _sunken_state(delta):
-	pass
+
 
 
 ############## ENTER STATE FUNKTIONS ####################
@@ -204,20 +231,15 @@ func _enter_driving_state():
 func _enter_shooting_state():
 	state = SHOOTING
 
-func _enter_sunken_state():
-	pass
 
 ##################### ENTER AREAS ############################
 
 func _on_enter_boat_area_body_entered(body: Node2D) -> void:
-	# Om vi redan är i driving state eller någon redan är i båten: ignoreras
-	if state == DRIVING or player != null:
-		return
-	# kontrollera att det verkligen är player
-	if body is Player:
-		enter_boat(body)
-		
-		
+	if body is Player: # Kontrollera att det är spelaren
+		player_at_dock = body
+		boat_entry.visible = true
+	
+	
 ######################## TIMERS/COOLDOWNS ####################
 
 
@@ -228,3 +250,14 @@ func _on_right_cannon_cd_timeout() -> void:
 
 func _on_left_cannon_cd_timeout() -> void:
 	left_cooldown = true
+
+
+func _on_enter_boat_area_body_exited(body: Node2D) -> void:
+	if body == player_at_dock:
+		player_at_dock = null
+		boat_entry.visible = false
+	
+
+
+func _on_startup_timeout() -> void:
+	can_die = true

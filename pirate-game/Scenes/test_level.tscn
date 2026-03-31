@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c0so65tk7o1ix"]
+[gd_scene load_steps=27 format=4 uid="uid://c0so65tk7o1ix"]
 
 [ext_resource type="PackedScene" uid="uid://7koftngh4u3c" path="res://Scenes/map_template.tscn" id="1_2yvf5"]
 [ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_3ihge"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cq6kucqhq3wfw" path="res://Scenes/cannon_wall.tscn" id="6_mwmob"]
 [ext_resource type="PackedScene" uid="uid://c0hft8fgldlnk" path="res://Scenes/enemy_heavy_ship.tscn" id="7_so54a"]
 [ext_resource type="PackedScene" uid="uid://bqiaplbiau2c6" path="res://Scenes/mele_enemy.tscn" id="8_sw8nc"]
-[ext_resource type="PackedScene" uid="uid://3hi2t2wd7abw" path="res://player.tscn" id="9_3ihge"]
+[ext_resource type="PackedScene" uid="uid://3hi2t2wd7abw" path="res://Scenes/player.tscn" id="9_3ihge"]
+[ext_resource type="PackedScene" uid="uid://cp7crl4sxk446" path="res://Scenes/enemy_light_ship.tscn" id="10_akkqd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gbhdq"]
 vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
@@ -34,7 +35,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y646j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_akkqd"]
 texture = ExtResource("2_3ihge")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -234,9 +235,9 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 120
 navigation_layer_0/layers = 2
-sources/3 = SubResource("TileSetAtlasSource_y646j")
+sources/3 = SubResource("TileSetAtlasSource_akkqd")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnbra"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v7by"]
 texture = ExtResource("3_akkqd")
 texture_region_size = Vector2i(128, 128)
 4:0/0 = 0
@@ -5506,7 +5507,7 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 120
-sources/0 = SubResource("TileSetAtlasSource_lnbra")
+sources/0 = SubResource("TileSetAtlasSource_8v7by")
 
 [sub_resource type="Resource" id="Resource_1rqgg"]
 resource_local_to_scene = true
@@ -5568,6 +5569,26 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
+[sub_resource type="Resource" id="Resource_x6ft1"]
+resource_local_to_scene = true
+script = ExtResource("5_3ihge")
+base_max_health = 250
+base_defence = 25
+base_damage = 10
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_p51s7"]
+resource_local_to_scene = true
+script = ExtResource("5_3ihge")
+base_max_health = 250
+base_defence = 25
+base_damage = 10
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
 [node name="Test_level" type="Node2D"]
 
 [node name="map_template" parent="." instance=ExtResource("1_2yvf5")]
@@ -5592,24 +5613,40 @@ rotation = 0.0
 stats = SubResource("Resource_1rqgg")
 
 [node name="Cannon_Wall2" parent="imported_scenes" instance=ExtResource("6_mwmob")]
-position = Vector2(1859, 1286)
-rotation = -3.14159
+position = Vector2(1725, 1087)
+rotation = 3.14159
 stats = SubResource("Resource_mwmob")
 
 [node name="Player" parent="imported_scenes" instance=ExtResource("9_3ihge")]
 position = Vector2(1433, 1224)
 stats = SubResource("Resource_akkqd")
 
-[node name="player_ship" parent="imported_scenes" instance=ExtResource("5_1rqgg")]
+[node name="player_ship" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("5_1rqgg")]
 position = Vector2(1545, 1789)
+rotation = 0.143249
+player = NodePath("../Player")
 stats = SubResource("Resource_8v7by")
 
 [node name="enemy_heavy_ship" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_so54a")]
-position = Vector2(3617, 2304)
+position = Vector2(3230, 2159)
+rotation = 1.59743
 stats = SubResource("Resource_so54a")
-player = NodePath("../player_ship")
+player = NodePath("../Player")
 
 [node name="mele_enemy" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("8_sw8nc")]
-position = Vector2(1274, 911)
+process_mode = 4
+position = Vector2(1711, 1226)
+rotation = 2.51327
 stats = SubResource("Resource_sw8nc")
+player = NodePath("../Player")
+
+[node name="enemy_light_ship" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("10_akkqd")]
+position = Vector2(-2726, 639)
+stats = SubResource("Resource_x6ft1")
+player = NodePath("../Player")
+
+[node name="enemy_light_ship2" parent="imported_scenes" node_paths=PackedStringArray("player") instance=ExtResource("10_akkqd")]
+position = Vector2(-2648, 1051)
+rotation = -0.534553
+stats = SubResource("Resource_p51s7")
 player = NodePath("../Player")

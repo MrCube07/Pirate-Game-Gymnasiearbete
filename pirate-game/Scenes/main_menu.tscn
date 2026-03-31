@@ -1,0 +1,320 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4l5dxn68rqg3"]
+
+[ext_resource type="Texture2D" uid="uid://54xuastt1cxp" path="res://Pirate/pirate-ship-wood-deck-game-background-with-cannon-vector.jpg" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://dxr21nfqgsxke" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_n45e2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ehe0"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(107, 107, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(107, 155, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(11, 107, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(59, 107, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(107, 107, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
+texture = ExtResource("3_n45e2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(11, 107, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trj04"]
+texture = ExtResource("3_n45e2")
+region_rect = Rect2(871, 7, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16hvj"]
+texture = ExtResource("3_n45e2")
+region_rect = Rect2(839, 5, 18, 20)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="mainContainer" type="MarginContainer" parent="." node_paths=PackedStringArray("main_menu_screen", "level_menu_screen")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -480.0
+offset_right = 960.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+main_menu_screen = NodePath("mainMenuContainer")
+level_menu_screen = NodePath("levelMenuContainer")
+
+[node name="backgroundRect" type="TextureRect" parent="mainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1ehe0")
+
+[node name="mainMenuContainer" type="MarginContainer" parent="mainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainContainer/mainMenuContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="coinsLabel" type="Label" parent="mainContainer/mainMenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.360784, 0.0431373, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 100
+text = "PIRATE GAME"
+
+[node name="separatorContainer" type="MarginContainer" parent="mainContainer/mainMenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="playButtonContainer" type="MarginContainer" parent="mainContainer/mainMenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="enter_level_menu_button" type="Button" parent="mainContainer/mainMenuContainer/VBoxContainer/playButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.517647, 0, 1)
+theme_override_colors/font_color = Color(3.7542e-06, 0.653202, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.654902, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.27451, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cp0ys")
+text = "PLAY"
+
+[node name="quitButtonContainer" type="MarginContainer" parent="mainContainer/mainMenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="quitButton" type="Button" parent="mainContainer/mainMenuContainer/VBoxContainer/quitButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.500878, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.763613, 1.85303e-06, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.968627, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.968627, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.294725, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cp0ys")
+text = "QUIT"
+
+[node name="levelMenuContainer" type="MarginContainer" parent="mainContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="mainContainer/levelMenuContainer"]
+layout_mode = 2
+texture = ExtResource("3_n45e2")
+region_rect = Rect2(153, 105, 30, 30)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = -30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="titleContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/titleContainer"]
+layout_mode = 2
+texture = ExtResource("3_n45e2")
+region_rect = Rect2(201, 9, 30, 30)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="coinsLabel" type="Label" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/titleContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -16.0
+offset_right = 67.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 40
+text = "LEVELS"
+
+[node name="separationContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+
+[node name="tutorialButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="tutorialButton" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/tutorialButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "TUTORIAL"
+
+[node name="level1ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="tutorialButton" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level1ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "LEVEL !"
+
+[node name="level2ButtonContainer3" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="tutorialButton" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level2ButtonContainer3"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "LEVEL 2"
+
+[node name="enter_level_menu_button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_trj04")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_trj04")
+theme_override_styles/normal = SubResource("StyleBoxTexture_16hvj")
+
+[connection signal="pressed" from="mainContainer/mainMenuContainer/VBoxContainer/playButtonContainer/enter_level_menu_button" to="mainContainer" method="_on_enter_level_menu_button_pressed"]
+[connection signal="pressed" from="mainContainer/mainMenuContainer/VBoxContainer/quitButtonContainer/quitButton" to="mainContainer" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/tutorialButtonContainer/tutorialButton" to="mainContainer" method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/enter_level_menu_button" to="mainContainer" method="_on_enter_level_menu_button_pressed"]

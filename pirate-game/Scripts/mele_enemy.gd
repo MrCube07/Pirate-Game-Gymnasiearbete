@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal enemy_health_changed
 
 const MAX_SPEED:int = 200
 const ACC:int = 50
@@ -19,15 +20,20 @@ var can_die: bool = false
 @export var player: Node2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var startup: Timer = $Startup
-
+@onready var health_bar = $HealthBar2D
+@onready var hurtbox: Area2D = $Hurtbox
 
 
 func _ready():
-	await get_tree().process_frame # Vänta på att nav-meshen laddas
-	makepath()
+	await get_tree().process_frame
 	if stats:
 		stats.initialize()
+		# Pass the actual stats resource to the bar
+		health_bar.setup_with_stats(stats)
+	
 	startup.start()
+	makepath()
+	
 	
 	
 
@@ -74,9 +80,9 @@ func _idle_state(delta):
 	var dist_to_player = global_position.distance_to(player.global_position)
 	var lerp_weigth = delta * FRIC
 	var direction = player.global_position
-	velocity = lerp(velocity, direction, lerp_weigth)
+	#velocity = lerp(velocity, direction, lerp_weigth)
 	
-	move_and_slide()
+	#move_and_slide()
 	
 	if dist_to_player < detection_range and combat_range < dist_to_player:
 		_enter_walk_state()
@@ -91,6 +97,8 @@ func _walk_state(delta):
 		
 	
 func _dead_state(delta):
+	player.coins += 20
+	player.score += 100
 	queue_free()
 	
 
@@ -112,3 +120,8 @@ func _on_navigation_cd_timeout() -> void:
 
 func _on_startup_timeout() -> void:
 	can_die = true
+
+
+func _on_hurtbox_health_changed(new_health: int) -> void:
+	# Now we pass that value along to the health bar via our local signal
+	emit_signal("enemy_health_changed", new_health)

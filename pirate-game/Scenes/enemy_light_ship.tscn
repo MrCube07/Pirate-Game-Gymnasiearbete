@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp7crl4sxk446"]
+[gd_scene load_steps=12 format=3 uid="uid://cp7crl4sxk446"]
 
 [ext_resource type="Script" uid="uid://dr3jku0j7dbf0" path="res://Scripts/enemy_light_ship.gd" id="1_yguxu"]
 [ext_resource type="Resource" uid="uid://d04ajk85abslf" path="res://Recourses/enemy_light_ship_stats.tres" id="2_cepcu"]
@@ -9,6 +9,40 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7adtp"]
 radius = 274.0
 height = 594.0
+
+[sub_resource type="Gradient" id="Gradient_cepcu"]
+offsets = PackedFloat32Array(0, 0.226027, 0.979452, 1)
+colors = PackedColorArray(0.972549, 0.960784, 0, 1, 0.972549, 0.752941, 0, 1, 0.972549, 0.184314, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7adtp"]
+gradient = SubResource("Gradient_cepcu")
+
+[sub_resource type="Curve" id="Curve_pc4vu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.216667), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wnbjo"]
+curve = SubResource("Curve_pc4vu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ijsor"]
+particle_flag_disable_z = true
+spread = 147.674
+initial_velocity_min = 116.79
+initial_velocity_max = 222.63
+gravity = Vector3(5, 5, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 18.25
+tangential_accel_min = -100.0
+tangential_accel_max = 86.13
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_wnbjo")
+scale_over_velocity_min = 658.9
+scale_over_velocity_max = 892.48
+color = Color(1, 1, 0.403922, 1)
+color_ramp = SubResource("GradientTexture1D_7adtp")
+turbulence_enabled = true
+turbulence_noise_strength = 13.34
 
 [node name="enemy_light_ship" type="CharacterBody2D"]
 collision_layer = 8
@@ -37,10 +71,10 @@ texture = ExtResource("3_cepcu")
 polygon = PackedVector2Array(-266, 70, -176, 129, -66, 166, 74, 155, 189, 96, 276, 4, 161, -105, 57, -150, -63, -154, -172, -128, -264, -86)
 
 [node name="right_muzzle" type="Marker2D" parent="."]
-position = Vector2(-88, 175)
+position = Vector2(-88, 190)
 
 [node name="left_muzzle" type="Marker2D" parent="."]
-position = Vector2(-88, -175)
+position = Vector2(-88, -180)
 
 [node name="right_cannon_range" type="RayCast2D" parent="."]
 position = Vector2(-88, 160)
@@ -75,7 +109,6 @@ avoidance_enabled = true
 radius = 100.0
 avoidance_layers = 8
 avoidance_mask = 8
-debug_enabled = true
 
 [node name="pathfind_cd" type="Timer" parent="."]
 wait_time = 0.5
@@ -92,6 +125,16 @@ position = Vector2(-13, 5)
 scale = Vector2(1, 0.56)
 shape = SubResource("CapsuleShape2D_7adtp")
 
+[node name="startup" type="Timer" parent="."]
+
+[node name="death_particles" type="GPUParticles2D" parent="."]
+position = Vector2(-82, -1)
+scale = Vector2(2, 2)
+amount = 500
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ijsor")
+
 [connection signal="timeout" from="right_cd" to="." method="_on_right_cd_timeout"]
 [connection signal="timeout" from="left_cd" to="." method="_on_left_cd_timeout"]
 [connection signal="timeout" from="pathfind_cd" to="." method="_on_pathfind_cd_timeout"]
+[connection signal="timeout" from="startup" to="." method="_on_startup_timeout"]

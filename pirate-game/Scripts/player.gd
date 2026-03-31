@@ -2,29 +2,39 @@ extends CharacterBody2D
 
 class_name Player
 
+signal player_health_changed
+
 const MAX_SPEED:int = 250
 const ACC:int = 50
 const FRIC:int = 5
 
-enum { IDLE, WALK, ATTACKING, DEAD }
+enum { IDLE, WALK, ATTACKING}
 
 var state = IDLE
 var is_attacking: bool = false
-var is_dead: bool = false
+var can_die: bool = false
 
+var coins: int = 0
+var score: int = 0
 
 @export var stats: Stats
 @onready var camera: Camera2D = $Camera2D
 @onready var player_animations: AnimationPlayer = $player_animations
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var startup: Timer = $startup
+@onready var health_bar = $UI/HUD/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect/HealthBar2D
+@onready var hurtbox: Area2D = $Hurtbox
 
 
-
-func _ready() -> void:
-	stats.initialize()
+##################### MAIN LOOP #########################
+func _ready():
+	await get_tree().process_frame
+	if stats:
+		stats.initialize()
+		# Pass the actual stats resource to the bar
+		health_bar.setup_with_stats(stats)
+	startup.start()
 	
-
-######################### GAME LOOP #############################
 func _physics_process(delta: float) -> void:
 	
 	look_at(get_global_mouse_position())
@@ -33,8 +43,6 @@ func _physics_process(delta: float) -> void:
 			_idle_state(delta)
 		WALK:
 			_walk_state(delta)
-		DEAD:
-			_dead_state(delta)
 			
 
 #################### GENERAL FUNKTIONS #############################
@@ -58,13 +66,17 @@ func _idle_state(delta):
 	_movement(delta)
 	if velocity.length() > 0:
 		_enter_walk_state()
+	if stats.health <= 0 and can_die:
+		get_tree().change_scene_to_file("res://Scenes/defeat_screen.tscn")
+		print("player")
 func _walk_state(delta):
 	_movement(delta)
 	if velocity.length() == 0:
 		_enter_idle_state()
-func _dead_state(delta):
-	pass
-	
+	if stats.health <= 0 and can_die:
+		get_tree().change_scene_to_file("res://Scenes/defeat_screen.tscn")
+		print("player")
+
 
 #################### ENTER STATE FUNKTIONS ##########################
 func _enter_idle_state():
@@ -73,5 +85,13 @@ func _enter_idle_state():
 func _enter_walk_state():
 	state = WALK
 
-func _enter_dead_state():
-	pass
+
+
+
+func _on_startup_timeout() -> void:
+	can_die = true
+
+
+func _on_hurtbox_health_changed(new_health: int) -> void:
+		# Now we pass that value along to the health bar via our local signal
+	emit_signal("player_health_changed", new_health)

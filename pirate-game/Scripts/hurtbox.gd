@@ -4,6 +4,8 @@ class_name Hurtbox extends Area2D
 # Detta förutsätter att owner har en variabel som heter 'stats'.
 @onready var owner_stats: Stats = owner.stats
 
+signal health_changed
+
 func _ready() -> void:
 	monitoring = false
 
@@ -22,6 +24,6 @@ func recieve_hit(hitbox: Hitbox) -> void:
 		final_damage = max(incoming_damage - owner_stats.current_defence, 1.0)
 	
 	owner_stats.health -= int(final_damage)
-	
+	emit_signal("health_changed", owner_stats.health)
 	
 	#print(owner.name, " HP: ", owner_stats.health, " (Tog ", int(final_damage), " skada)")

@@ -1,29 +1,23 @@
-[gd_scene load_steps=140 format=3 uid="uid://di5cymoe3jyll"]
+[gd_scene load_steps=143 format=3 uid="uid://3hi2t2wd7abw"]
 
-[ext_resource type="Script" uid="uid://cep2sgbfhe23v" path="res://Scripts/player.gd" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="2_7dp3o"]
-[ext_resource type="Resource" uid="uid://b5y6vgqttqj1f" path="res://Recourses/player_stats.tres" id="2_gymyn"]
-[ext_resource type="Texture2D" uid="uid://di6h2cnq52ydx" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_character.png" id="2_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cgtwynt3ia47e" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_hand.png" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://meyjq654ae64" path="res://kenney_pirate-pack/PNG/Default size/Items/shield_curved.png" id="4_sweqy"]
-[ext_resource type="Texture2D" uid="uid://b1ndl8dvhu4rv" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_longsword.png" id="5_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://bldfdvno2vn8" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_pole.png" id="6_b26j0"]
-[ext_resource type="Texture2D" uid="uid://boh7twipl72b6" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_axe_double.png" id="7_n7ghd"]
-[ext_resource type="Texture2D" uid="uid://cktilekesy7uk" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_bow.png" id="8_nvl01"]
-[ext_resource type="Texture2D" uid="uid://d2337mr5regsl" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_arrow.png" id="9_ivps1"]
-[ext_resource type="Script" uid="uid://bjo8rg0so0ewl" path="res://Scripts/animation.gd" id="10_n7ghd"]
-[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="12_pu2lt"]
-[ext_resource type="Script" uid="uid://b2uq7rx1vd7ex" path="res://Scripts/hitbox.gd" id="14_7dp3o"]
-
-[sub_resource type="Resource" id="Resource_h4iuc"]
-resource_local_to_scene = true
-script = ExtResource("2_7dp3o")
-base_max_health = 1000
-base_defence = 50
-base_damage = 200
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+[ext_resource type="Script" uid="uid://cep2sgbfhe23v" path="res://Scripts/player.gd" id="1_urp6f"]
+[ext_resource type="Resource" uid="uid://b5y6vgqttqj1f" path="res://Recourses/player_stats.tres" id="2_bwjto"]
+[ext_resource type="Texture2D" uid="uid://di6h2cnq52ydx" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_character.png" id="3_606se"]
+[ext_resource type="Texture2D" uid="uid://bldfdvno2vn8" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_pole.png" id="4_u1c27"]
+[ext_resource type="Texture2D" uid="uid://meyjq654ae64" path="res://kenney_pirate-pack/PNG/Default size/Items/shield_curved.png" id="5_op7ga"]
+[ext_resource type="Texture2D" uid="uid://b1ndl8dvhu4rv" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_longsword.png" id="6_q13i1"]
+[ext_resource type="Texture2D" uid="uid://boh7twipl72b6" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_axe_double.png" id="7_pylmc"]
+[ext_resource type="Texture2D" uid="uid://cktilekesy7uk" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_bow.png" id="8_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://d2337mr5regsl" path="res://kenney_pirate-pack/PNG/Default size/Items/weapon_arrow.png" id="9_5tmop"]
+[ext_resource type="Texture2D" uid="uid://cgtwynt3ia47e" path="res://kenney_pirate-pack/PNG/Default size/Characters/red_hand.png" id="10_7ahtn"]
+[ext_resource type="Script" uid="uid://bjo8rg0so0ewl" path="res://Scripts/animation.gd" id="11_7lmhl"]
+[ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="12_dx0e4"]
+[ext_resource type="Script" uid="uid://b2uq7rx1vd7ex" path="res://Scripts/hitbox.gd" id="13_jm5j8"]
+[ext_resource type="PackedScene" uid="uid://cfc4dqnhnd4ng" path="res://Scenes/pop_up_ui.tscn" id="14_7dp3o"]
+[ext_resource type="Script" uid="uid://cbdj8ysqduaq1" path="res://Scenes/hud.gd" id="14_igrcy"]
+[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="15_fd4e3"]
+[ext_resource type="PackedScene" uid="uid://bpsrn4wc8548e" path="res://addons/health_bar_2d/health_bar_2d.tscn" id="16_qqcod"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="17_qqcod"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 20.0
@@ -1314,7 +1308,6 @@ advance_mode = 2
 advance_condition = &"moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tkwlq"]
-switch_mode = 1
 advance_mode = 2
 advance_expression = "!idle"
 
@@ -1428,7 +1421,6 @@ advance_expression = "!sword"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7ghd"]
 reset = false
-switch_mode = 1
 advance_mode = 2
 advance_expression = "idle"
 
@@ -1436,7 +1428,7 @@ advance_expression = "idle"
 switch_mode = 2
 advance_mode = 2
 advance_expression = "velocity
-!attacking"
+"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ivps1"]
 advance_mode = 2
@@ -1463,7 +1455,7 @@ states/End/position = Vector2(1229, 158)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_606se")
 states/Idle/position = Vector2(323, 165)
 states/SpearIdle/node = SubResource("AnimationNodeBlendSpace2D_u1c27")
-states/SpearIdle/position = Vector2(401, 367)
+states/SpearIdle/position = Vector2(401, 367.5)
 states/SpearThrust/node = SubResource("AnimationNodeBlendSpace2D_op7ga")
 states/SpearThrust/position = Vector2(338, 453)
 states/SpearWalking/node = SubResource("AnimationNodeBlendSpace2D_q13i1")
@@ -1478,7 +1470,7 @@ states/SwordWalking/position = Vector2(611, 94)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_7ahtn")
 states/Walking/position = Vector2(209, 251)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "AxeSwing", "AxeWalking", SubResource("AnimationNodeStateMachineTransition_dx0e4"), "AxeWalking", "AxeSwing", SubResource("AnimationNodeStateMachineTransition_jm5j8"), "SwordWalking", "SwordSwing", SubResource("AnimationNodeStateMachineTransition_qtqh7"), "SpearThrust", "SpearWalking", SubResource("AnimationNodeStateMachineTransition_2wuci"), "SpearWalking", "SpearThrust", SubResource("AnimationNodeStateMachineTransition_iruf7"), "BowWalking", "BowFire", SubResource("AnimationNodeStateMachineTransition_efrwb"), "BowFire", "BowWalking", SubResource("AnimationNodeStateMachineTransition_hiqhm"), "SwordIdle", "SwordWalking", SubResource("AnimationNodeStateMachineTransition_tkwlq"), "SwordIdle", "SwordSwing", SubResource("AnimationNodeStateMachineTransition_ek41f"), "SwordSwing", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_khis8"), "BowIdle", "BowWalking", SubResource("AnimationNodeStateMachineTransition_b88wv"), "BowWalking", "BowIdle", SubResource("AnimationNodeStateMachineTransition_pgbbb"), "BowFire", "BowIdle", SubResource("AnimationNodeStateMachineTransition_331ug"), "BowIdle", "BowFire", SubResource("AnimationNodeStateMachineTransition_ny14h"), "AxeIdle", "AxeWalking", SubResource("AnimationNodeStateMachineTransition_ibah8"), "AxeWalking", "AxeIdle", SubResource("AnimationNodeStateMachineTransition_3iwfv"), "AxeIdle", "AxeSwing", SubResource("AnimationNodeStateMachineTransition_qwsg1"), "AxeSwing", "AxeIdle", SubResource("AnimationNodeStateMachineTransition_1xqrm"), "SpearIdle", "SpearWalking", SubResource("AnimationNodeStateMachineTransition_bfour"), "SpearIdle", "SpearThrust", SubResource("AnimationNodeStateMachineTransition_8gr2b"), "SpearWalking", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_vl8ci"), "SpearThrust", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_ieltc"), "Idle", "SpearIdle", SubResource("AnimationNodeStateMachineTransition_fddr8"), "SpearIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_oybyf"), "Idle", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_ajfva"), "SwordIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_5ef02"), "Idle", "BowIdle", SubResource("AnimationNodeStateMachineTransition_pfmca"), "BowIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_76oay"), "Idle", "AxeIdle", SubResource("AnimationNodeStateMachineTransition_b4uyv"), "AxeIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_tw8ou"), "SpearWalking", "Idle", SubResource("AnimationNodeStateMachineTransition_ygbnx"), "AxeWalking", "Idle", SubResource("AnimationNodeStateMachineTransition_v2t6f"), "BowWalking", "Idle", SubResource("AnimationNodeStateMachineTransition_l3lcn"), "SwordWalking", "Idle", SubResource("AnimationNodeStateMachineTransition_xry5e"), "SwordWalking", "SwordIdle", SubResource("AnimationNodeStateMachineTransition_n7ghd"), "SwordSwing", "SwordWalking", SubResource("AnimationNodeStateMachineTransition_nvl01"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_ivps1"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_urp6f")]
-graph_offset = Vector2(0, -13.1556)
+graph_offset = Vector2(218.025, 63.2916)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukyrk"]
 radius = 24.0832
@@ -1488,10 +1480,10 @@ size = Vector2(84, 164)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 32
-collision_mask = 92
+collision_mask = 1116
 platform_floor_layers = 4294901760
-script = ExtResource("1_onrkg")
-stats = SubResource("Resource_h4iuc")
+script = ExtResource("1_urp6f")
+stats = ExtResource("2_bwjto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1501,6 +1493,7 @@ shape = SubResource("CircleShape2D_4flbx")
 debug_color = Color(0.931603, 2.69532e-05, 0.65211, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
 limit_left = 0
 limit_top = 0
 position_smoothing_enabled = true
@@ -1510,7 +1503,7 @@ position_smoothing_enabled = true
 [node name="Body" type="Polygon2D" parent="Polygons"]
 position = Vector2(-42, -43)
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("2_onrkg")
+texture = ExtResource("3_606se")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(30.5144, 7.47245, 47.9024, 12.9857, 57.2326, 28.6773, 50.8711, 47.3376, 33.4831, 56.2437, 13.9746, 50.3063, 4.6445, 31.646, 12.7024, 12.9857, 31.3626, 31.2219)
 uv = PackedVector2Array(30.5144, 7.47245, 47.9024, 12.9857, 57.2326, 28.6773, 50.8711, 47.3376, 33.4831, 56.2437, 13.9746, 50.3063, 4.6445, 31.646, 12.7024, 12.9857, 31.3626, 31.2219)
@@ -1523,7 +1516,7 @@ visible = false
 position = Vector2(82, -53)
 rotation = 1.37092
 scale = Vector2(2, 2)
-texture = ExtResource("6_b26j0")
+texture = ExtResource("4_u1c27")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(41, -0.5, 23, -2.5, 24, 61.5, 38, 63.5)
 uv = PackedVector2Array(41, -0.5, 23, -2.5, 24, 61.5, 38, 63.5)
@@ -1535,7 +1528,7 @@ visible = false
 position = Vector2(47, -97)
 rotation = 0.998328
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_sweqy")
+texture = ExtResource("5_op7ga")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.8019, 8.41125, -5.76379, 29.4481, 32.5533, 51.9875, 70.119, 32.4533, 30.2993, 30.9507)
 uv = PackedVector2Array(31.8019, 8.41125, -5.76379, 29.4481, 32.5533, 51.9875, 70.119, 32.4533, 30.2993, 30.9507)
@@ -1547,7 +1540,7 @@ internal_vertex_count = 1
 position = Vector2(89, -31)
 rotation = 1.43526
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("5_2hs0m")
+texture = ExtResource("6_q13i1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(32.7356, 1.12373, 17.7093, 1.12373, 17.7093, 61.2289, 32.7356, 61.9119, 46.3958, 61.9119, 46.3958, 1.12373, 31.3696, 31.1763)
 uv = PackedVector2Array(32.7356, 1.12373, 17.7093, 1.12373, 17.7093, 61.2289, 32.7356, 61.9119, 46.3958, 61.9119, 46.3958, 1.12373, 31.3696, 31.1763)
@@ -1560,7 +1553,7 @@ visible = false
 position = Vector2(111, 61)
 rotation = 2.85885
 scale = Vector2(2, 2)
-texture = ExtResource("7_n7ghd")
+texture = ExtResource("7_pylmc")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(57.2246, -0.647682, 6.68167, -2.69672, 5.99866, 28.7219, 21.025, 32.137, 25.8061, 61.5065, 36.0512, 60.8235, 38.7833, 30.7709, 53.8096, 35.552, 29.2211, 15.7446)
 uv = PackedVector2Array(58.5907, 3.4504, 8.0477, 1.40136, 7.36468, 32.82, 22.391, 36.235, 27.1721, 65.6046, 37.4173, 64.9216, 40.1493, 34.869, 55.1756, 39.6501, 30.5872, 19.8427)
@@ -1572,7 +1565,7 @@ internal_vertex_count = 1
 visible = false
 position = Vector2(-22, -44)
 rotation = -0.427606
-texture = ExtResource("8_nvl01")
+texture = ExtResource("8_pbfsw")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(-6, 16.5, 69, 16.5, 69, 44.5, -8, 46.5)
 uv = PackedVector2Array(-6, 16.5, 69, 16.5, 69, 44.5, -8, 46.5)
@@ -1582,7 +1575,7 @@ bones = ["Body", PackedFloat32Array(0, 0, 0, 0), "Body/LeftArm", PackedFloat32Ar
 [node name="Arrow" type="Polygon2D" parent="Polygons/Bow"]
 position = Vector2(71.8633, 56.9268)
 rotation = 1.77605
-texture = ExtResource("9_ivps1")
+texture = ExtResource("9_5tmop")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(23, 6.5, 42, 4.5, 45, 59.5, 23, 59.5)
 uv = PackedVector2Array(23, 6.5, 42, 4.5, 45, 59.5, 23, 59.5)
@@ -1593,7 +1586,7 @@ bones = ["Body", PackedFloat32Array(0, 0, 0, 0), "Body/LeftArm", PackedFloat32Ar
 position = Vector2(-20, -65)
 rotation = -0.0122561
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("3_i3pqv")
+texture = ExtResource("10_7ahtn")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
 uv = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
@@ -1605,7 +1598,7 @@ internal_vertex_count = 1
 position = Vector2(-31, -12)
 rotation = -0.186868
 scale = Vector2(1.3, 1.3)
-texture = ExtResource("3_i3pqv")
+texture = ExtResource("10_7ahtn")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
 uv = PackedVector2Array(31.74, 14.4995, 17.4651, 31.7797, 27.9834, 46.0547, 46.015, 34.0337, 31.74, 31.0284)
@@ -1678,7 +1671,7 @@ parameters/SwordWalking/blend_position = Vector2(0, 0)
 parameters/Walking/blend_position = Vector2(0, 0)
 
 [node name="Animation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("10_n7ghd")
+script = ExtResource("11_7lmhl")
 animation_tree = NodePath("../AnimationTree")
 
 [node name="Cd" type="Timer" parent="Animation"]
@@ -1688,7 +1681,7 @@ one_shot = true
 collision_layer = 32
 collision_mask = 0
 monitoring = false
-script = ExtResource("12_pu2lt")
+script = ExtResource("12_dx0e4")
 metadata/_custom_type_script = "uid://dn50ap3hnb2gw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -1697,14 +1690,106 @@ shape = SubResource("CircleShape2D_ukyrk")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 84
-script = ExtResource("14_7dp3o")
-attacker_stats = ExtResource("2_gymyn")
+collision_mask = 1108
+script = ExtResource("13_jm5j8")
+attacker_stats = ExtResource("2_bwjto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(33, -1)
 shape = SubResource("RectangleShape2D_h4iuc")
 disabled = true
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_igrcy")
+player = NodePath("../..")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/HUD/MarginContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("15_fd4e3")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/HUD/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("15_fd4e3")
+region_rect = Rect2(201, 105, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HealthBar2D" parent="UI/HUD/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect" instance=ExtResource("16_qqcod")]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 1104.0
+offset_bottom = 601.0
+scale = Vector2(22.15, 6)
+_static = true
+_gradient = true
+_animation_timeout = 600.0
+_offset = Vector2(7, 7)
+
+[node name="coinsLabel" type="Label" parent="UI/HUD/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("17_qqcod")
+theme_override_font_sizes/font_size = 30
+text = "COINS"
+
+[node name="pop_up_ui" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("14_7dp3o")]
+player = NodePath("../..")
+
+[node name="startup" type="Timer" parent="."]
+
 [connection signal="timeout" from="Animation/Cd" to="Animation" method="_on_cd_timeout"]
+[connection signal="health_changed" from="Hurtbox" to="." method="_on_hurtbox_health_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="startup" to="." method="_on_startup_timeout"]
