@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://c4l5dxn68rqg3"]
 
 [ext_resource type="Texture2D" uid="uid://54xuastt1cxp" path="res://Pirate/pirate-ship-wood-deck-game-background-with-cannon-vector.jpg" id="1_1ehe0"]
-[ext_resource type="Script" uid="uid://dxr21nfqgsxke" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
-[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="2_ce3w2"]
-[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_n45e2"]
+[ext_resource type="Script" uid="uid://dxr21nfqgsxke" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ehe0"]
 texture = ExtResource("3_n45e2")
@@ -163,7 +163,7 @@ text = "QUIT"
 
 [node name="levelMenuContainer" type="MarginContainer" parent="mainContainer"]
 visible = false
-custom_minimum_size = Vector2(300, 400)
+custom_minimum_size = Vector2(250, 350)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -262,7 +262,7 @@ text = "TUTORIAL"
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
 
-[node name="tutorialButton" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level1ButtonContainer"]
+[node name="level1Button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level1ButtonContainer"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
@@ -279,11 +279,11 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "LEVEL !"
 
-[node name="level2ButtonContainer3" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="level2ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
 
-[node name="tutorialButton" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level2ButtonContainer3"]
+[node name="level2Button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level2ButtonContainer"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
@@ -299,6 +299,70 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "LEVEL 2"
+
+[node name="level3ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="level3Button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level3ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "LEVEL3
+"
+
+[node name="level4ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="level4Button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level4ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "LEVEL 4"
+
+[node name="level5ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+
+[node name="level5Button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level5ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_hover_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_outline_color = Color(0.316457, 0.246526, 0.142233, 1)
+theme_override_colors/font_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_focus_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_colors/font_pressed_color = Color(0.592157, 0.411765, 0.368627, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
+text = "LEVEL 5"
 
 [node name="enter_level_menu_button" type="Button" parent="mainContainer/levelMenuContainer/NinePatchRect"]
 layout_mode = 1
@@ -317,4 +381,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_16hvj")
 [connection signal="pressed" from="mainContainer/mainMenuContainer/VBoxContainer/playButtonContainer/enter_level_menu_button" to="mainContainer" method="_on_enter_level_menu_button_pressed"]
 [connection signal="pressed" from="mainContainer/mainMenuContainer/VBoxContainer/quitButtonContainer/quitButton" to="mainContainer" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/tutorialButtonContainer/tutorialButton" to="mainContainer" method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level1ButtonContainer/level1Button" to="mainContainer" method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level2ButtonContainer/level2Button" to="mainContainer" method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level3ButtonContainer/level3Button" to="mainContainer" method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level4ButtonContainer/level4Button" to="mainContainer" method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer/level5ButtonContainer/level5Button" to="mainContainer" method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="mainContainer/levelMenuContainer/NinePatchRect/enter_level_menu_button" to="mainContainer" method="_on_enter_level_menu_button_pressed"]

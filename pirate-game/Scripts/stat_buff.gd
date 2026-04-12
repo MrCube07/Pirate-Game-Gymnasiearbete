@@ -1,6 +1,11 @@
 extends Resource
 class_name StatBuff
 
+"""
+användes inte, en del av en youtube video, länk i stats.gd
+"""
+
+
 enum BuffType {
 	MULTIPLY,
 	ADD

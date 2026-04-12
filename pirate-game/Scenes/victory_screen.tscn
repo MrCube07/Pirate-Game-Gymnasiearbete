@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu5tqwb0ycuvt"]
 
-[ext_resource type="Script" uid="uid://cbnei5aqchavh" path="res://Scenes/end_screen.gd" id="1_mubwb"]
-[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_oq8vb"]
+[ext_resource type="Script" uid="uid://cbnei5aqchavh" path="res://Scripts/end_screen.gd" id="1_mubwb"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="1_oq8vb"]
 
 [node name="victory_screen" type="Control"]
 layout_mode = 3

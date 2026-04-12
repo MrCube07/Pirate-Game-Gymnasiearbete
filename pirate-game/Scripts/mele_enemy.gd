@@ -13,7 +13,7 @@ var state = IDLE
 var is_attacking: bool = false
 var is_dead: bool = false
 var combat_range: int = 75
-var detection_range: int = 500
+var detection_range: int = 1000
 var can_die: bool = false
 
 @export var stats: Stats
@@ -28,7 +28,6 @@ func _ready():
 	await get_tree().process_frame
 	if stats:
 		stats.initialize()
-		# Pass the actual stats resource to the bar
 		health_bar.setup_with_stats(stats)
 	
 	startup.start()
@@ -53,18 +52,18 @@ func _physics_process(delta: float) -> void:
 func _movement(delta: float) -> void:
 	
 
-	# 1. Hämta nästa punkt i stigen
+	# Hämta nästa punkt i stigen
 	var next_pos = nav_agent.get_next_path_position()
 	
-	# 2. Räkna ut riktningen till punkten (globalt)
+	# Räkna ut riktningen till punkten (global)
 	var direction = global_position.direction_to(next_pos)
 	
 	rotation = direction.angle()
 	var target_angle = direction.angle()
 	
-	# 4. Rörelse framåt baserat på nuvarande rotation
+	# Rörelse framåt baserat på nuvarande rotation
 	
-	# Logik för om vi ska åka eller stanna
+	# Logik för om vi ska gå eller stanna
 		
 	var lerp_weigth = delta * ACC
 	velocity = lerp(velocity, direction * MAX_SPEED, lerp_weigth)
@@ -84,7 +83,7 @@ func _idle_state(delta):
 	
 	#move_and_slide()
 	
-	if dist_to_player < detection_range and combat_range < dist_to_player:
+	if dist_to_player < detection_range and combat_range < dist_to_player and not player.on_board:
 		_enter_walk_state()
 		
 func _walk_state(delta):
@@ -92,13 +91,15 @@ func _walk_state(delta):
 	_movement(delta)
 	if dist_to_player + 100 < combat_range:
 		_enter_idle_state()
+	elif player.on_board == true:
+		_enter_idle_state()
 	if stats.health <= 0 and can_die:
 		_enter_dead_state()
 		
 	
 func _dead_state(delta):
-	player.coins += 20
-	player.score += 100
+	Global.coins += 40
+	Global.score += 100
 	queue_free()
 	
 

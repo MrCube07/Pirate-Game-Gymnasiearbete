@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://cev20ucm17uh"]
+
+[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="1_utsml"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_utsml")
+base_max_health = 750
+base_defence = 10
+base_damage = 150
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"

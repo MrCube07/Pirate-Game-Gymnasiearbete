@@ -1,15 +1,19 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfc4dqnhnd4ng"]
+[gd_scene load_steps=41 format=3 uid="uid://cfc4dqnhnd4ng"]
 
-[ext_resource type="Script" uid="uid://3ric7x7jqbyd" path="res://Scenes/pop_up_ui.gd" id="1_20cj6"]
+[ext_resource type="Script" uid="uid://3ric7x7jqbyd" path="res://Scripts/pop_up_ui.gd" id="1_20cj6"]
 [ext_resource type="Script" uid="uid://bowfguco543ce" path="res://Scripts/pop_up_menu.gd" id="1_mmvwm"]
-[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_20cj6"]
-[ext_resource type="Texture2D" uid="uid://b6xn80ots846h" path="res://kenney_ui-pack-adventure/Vector/panel_brown.svg" id="3_a1jvo"]
-[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="5_8uuji"]
-[ext_resource type="Texture2D" uid="uid://c6o6b1nb8x41y" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/audio-off-icon.png" id="6_8iuu6"]
-[ext_resource type="Texture2D" uid="uid://b0q4ri132mo1d" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/audio-on-icon.png" id="7_ylddn"]
-[ext_resource type="Texture2D" uid="uid://btp5k3avs4lq0" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/brightness-off-icon.png" id="8_gfvoc"]
-[ext_resource type="Texture2D" uid="uid://dllpchlqm025b" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/brightness-on-icon.png" id="9_bq12h"]
-[ext_resource type="Texture2D" uid="uid://dyca5imwfwmcr" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/modifided version of the sprite sheet.png" id="10_xgu42"]
+[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_20cj6"]
+[ext_resource type="Texture2D" uid="uid://b6xn80ots846h" path="res://Assets/kenney_ui-pack-adventure/Vector/panel_brown.svg" id="3_a1jvo"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="5_8uuji"]
+[ext_resource type="Texture2D" uid="uid://c6o6b1nb8x41y" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/audio-off-icon.png" id="6_8iuu6"]
+[ext_resource type="Texture2D" uid="uid://b0q4ri132mo1d" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/audio-on-icon.png" id="7_ylddn"]
+[ext_resource type="Texture2D" uid="uid://btp5k3avs4lq0" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/brightness-off-icon.png" id="8_gfvoc"]
+[ext_resource type="Texture2D" uid="uid://dllpchlqm025b" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/brightness-on-icon.png" id="9_bq12h"]
+[ext_resource type="Texture2D" uid="uid://dyca5imwfwmcr" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/custom sprites/modifided version of the sprite sheet.png" id="10_xgu42"]
+[ext_resource type="Texture2D" uid="uid://bkx1mbtm68pi7" path="res://Assets/kenney_pirate-pack/PNG/Default size/Items/weapon_sword.png" id="11_20cj6"]
+[ext_resource type="Texture2D" uid="uid://bldfdvno2vn8" path="res://Assets/kenney_pirate-pack/PNG/Default size/Items/weapon_pole.png" id="12_ikkt6"]
+[ext_resource type="Texture2D" uid="uid://bremhy7jetggi" path="res://Assets/kenney_pirate-pack/PNG/Default size/Items/weapon_axe_large.png" id="13_8uuji"]
+[ext_resource type="Texture2D" uid="uid://12rqyqj1n50d" path="res://addons/health_bar_2d/Health potion.png" id="14_8uuji"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wnrh"]
 texture = ExtResource("2_20cj6")
@@ -26,11 +30,11 @@ region_rect = Rect2(677, 166, 22, 22)
 texture = ExtResource("2_20cj6")
 region_rect = Rect2(645, 164, 22, 24)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltg2s"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8iuu6"]
 texture = ExtResource("2_20cj6")
 region_rect = Rect2(805, 102, 22, 22)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6n2q"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylddn"]
 texture = ExtResource("2_20cj6")
 region_rect = Rect2(773, 100, 22, 24)
 
@@ -119,7 +123,42 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(11, 59, 26, 28)
 
-[node name="pop_up_ui" type="Control"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1jvo"]
+texture = ExtResource("2_20cj6")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(58, 59, 27, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikkt6"]
+texture = ExtResource("2_20cj6")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(107, 59, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8uuji"]
+texture = ExtResource("2_20cj6")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(11, 59, 26, 28)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8iuu6"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-cd0fd7a5cf655fa8eab93876d1540784.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltg2s"]
+texture = ExtResource("2_20cj6")
+region_rect = Rect2(869, 102, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6n2q"]
+texture = ExtResource("2_20cj6")
+region_rect = Rect2(837, 100, 22, 24)
+
+[node name="pop_up_ui" type="Control" node_paths=PackedStringArray("swordPatchRect", "spearPatchRect", "axePatchRect", "healPatchRect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,8 +168,12 @@ grow_vertical = 2
 pivot_offset = Vector2(-446, -207)
 mouse_filter = 2
 script = ExtResource("1_20cj6")
+swordPatchRect = NodePath("popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect")
+spearPatchRect = NodePath("popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect")
+axePatchRect = NodePath("popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect")
+healPatchRect = NodePath("popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect")
 
-[node name="popUp" type="MarginContainer" parent="." node_paths=PackedStringArray("menu_screen", "open_menu_screen", "help_menu_screen", "settings_menu_screeen", "quit_menu_screen")]
+[node name="popUp" type="MarginContainer" parent="." node_paths=PackedStringArray("menu_screen", "open_menu_screen", "help_menu_screen", "settings_menu_screeen", "quit_menu_screen", "shop_menu_screen")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,6 +186,7 @@ open_menu_screen = NodePath("openMenuScreen")
 help_menu_screen = NodePath("helpMenuScreen")
 settings_menu_screeen = NodePath("settingsMenuScreen")
 quit_menu_screen = NodePath("quitMenuScreen")
+shop_menu_screen = NodePath("shopMenuScreen")
 
 [node name="baseMenuScreenContainer" type="VBoxContainer" parent="popUp"]
 visible = false
@@ -216,9 +260,9 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/hover = SubResource("StyleBoxTexture_ltg2s")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ltg2s")
-theme_override_styles/normal = SubResource("StyleBoxTexture_d6n2q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8iuu6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8iuu6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ylddn")
 
 [node name="rightbuttonContainer" type="VBoxContainer" parent="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
 layout_mode = 2
@@ -606,6 +650,7 @@ text = "NO
 "
 
 [node name="shopMenuScreen" type="MarginContainer" parent="popUp"]
+visible = false
 custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -703,13 +748,105 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="iconContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -20
+theme_override_constants/margin_bottom = 9
+
+[node name="TextureRect" type="TextureRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/HBoxContainer/iconContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_20cj6")
+
+[node name="pros" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 11
+text = "fast
+
+"
+
+[node name="cons" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 11
+text = "low damage
+short range
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = 0
+
+[node name="price" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 15
+text = "150 COINS
+"
+
+[node name="purschaseButtonContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = -12
+
+[node name="swordButton" type="Button" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/purschaseButtonContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_outline_color = Color(0.666667, 0.47451, 0.34902, 1)
+theme_override_colors/font_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_a1jvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ikkt6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uuji")
+text = "BUY"
 
 [node name="titleMargainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect"]
 layout_mode = 2
 offset_right = 175.0
-offset_bottom = 100.0
+offset_bottom = 20.0
 theme_override_constants/margin_top = -30
 
 [node name="titleNinePatchRect" type="NinePatchRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/titleMargainContainer"]
@@ -767,13 +904,106 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="iconContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -20
+theme_override_constants/margin_bottom = 9
+
+[node name="TextureRect" type="TextureRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/HBoxContainer/iconContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_ikkt6")
+
+[node name="pros" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 10
+text = "fast
+medium range
+"
+
+[node name="cons" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 9
+text = "low damage
+
+
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = 0
+
+[node name="price" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 15
+text = "250 COINS
+"
+
+[node name="purschaseButtonContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = -12
+
+[node name="spearButton" type="Button" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/purschaseButtonContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_outline_color = Color(0.666667, 0.47451, 0.34902, 1)
+theme_override_colors/font_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_a1jvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ikkt6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uuji")
+text = "BUY"
 
 [node name="titleMargainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect"]
 layout_mode = 2
 offset_right = 175.0
-offset_bottom = 100.0
+offset_bottom = 20.0
 theme_override_constants/margin_top = -30
 
 [node name="titleNinePatchRect" type="NinePatchRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/titleMargainContainer"]
@@ -788,24 +1018,13 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/titleMargainContainer/titleNinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -50.0
-offset_right = 60.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 21
-
-[node name="spearTitle" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/titleMargainContainer/titleNinePatchRect/MarginContainer"]
+[node name="spearTitle" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/titleMargainContainer/titleNinePatchRect"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
+offset_left = 20.5
+offset_top = 10.0
+offset_right = 103.5
+offset_bottom = 61.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
 theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
@@ -826,18 +1045,10 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="mainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="titleMargainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect"]
 layout_mode = 2
 offset_right = 175.0
-offset_bottom = 100.0
+offset_bottom = 20.0
 theme_override_constants/margin_top = -30
 
 [node name="titleNinePatchRect" type="NinePatchRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/titleMargainContainer"]
@@ -852,24 +1063,13 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/titleMargainContainer/titleNinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -50.0
-offset_right = 60.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 21
-
-[node name="axeTitle" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/titleMargainContainer/titleNinePatchRect/MarginContainer"]
+[node name="axeTitle" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/titleMargainContainer/titleNinePatchRect"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
+offset_left = 37.5
+offset_top = 10.0
+offset_right = 87.5
+offset_bottom = 61.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
 theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
@@ -879,6 +1079,106 @@ theme_override_font_sizes/font_size = 30
 text = "AXE
 "
 
+[node name="mainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="iconContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -20
+theme_override_constants/margin_bottom = 9
+
+[node name="TextureRect" type="TextureRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/HBoxContainer/iconContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_8uuji")
+
+[node name="pros" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 11
+text = "high damage
+medium range
+"
+
+[node name="cons" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 11
+text = "slow
+
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = 0
+
+[node name="price" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 15
+text = "400 COINS
+"
+
+[node name="purschaseButtonContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = -12
+
+[node name="axeButton" type="Button" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/purschaseButtonContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_outline_color = Color(0.666667, 0.47451, 0.34902, 1)
+theme_override_colors/font_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_a1jvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ikkt6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uuji")
+text = "BUY"
+
 [node name="contetntRow2" type="VBoxContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
@@ -887,6 +1187,7 @@ theme_override_constants/separation = 40
 layout_mode = 2
 
 [node name="bowPatchRect" type="NinePatchRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2"]
+visible = false
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -954,20 +1255,12 @@ text = "BOW
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_20cj6")
+texture = SubResource("CompressedTexture2D_8iuu6")
 region_rect = Rect2(201, 9, 30, 30)
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
-
-[node name="mainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="titleMargainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect"]
 layout_mode = 2
@@ -1014,7 +1307,94 @@ theme_override_font_sizes/font_size = 30
 text = "HEAL
 "
 
+[node name="mainContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="iconContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -15
+theme_override_constants/margin_bottom = 9
+
+[node name="TextureRect" type="TextureRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/HBoxContainer/iconContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_8uuji")
+
+[node name="pros" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 16
+text = "HEAL 25% 
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -40
+theme_override_constants/margin_right = 0
+
+[node name="price" type="Label" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.909804, 0.811765, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.698039, 0.517647, 0.392157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 15
+text = "100 COINS
+"
+
+[node name="purschaseButtonContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = -12
+
+[node name="healButton" type="Button" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/purschaseButtonContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_outline_color = Color(0.666667, 0.47451, 0.34902, 1)
+theme_override_colors/font_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94902, 0.823529, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_8uuji")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_a1jvo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ikkt6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uuji")
+text = "BUY"
+
 [node name="atk_buffPatchRect" type="NinePatchRect" parent="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2"]
+visible = false
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1078,8 +1458,29 @@ theme_override_font_sizes/font_size = 26
 text = "ATK BUFF
 "
 
+[node name="MarginContainer" type="MarginContainer" parent="popUp/shopMenuScreen/mainNinePatchRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="shopButton" type="Button" parent="popUp/shopMenuScreen/mainNinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_ltg2s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ltg2s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_d6n2q")
+
 [connection signal="pressed" from="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/menuButton" to="popUp" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/leftButtonContainer/quitButton" to="popUp" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/leftButtonContainer/shopButton" to="popUp" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/rightbuttonContainer/toggleHelpButton" to="popUp" method="_on_toggle_help_button_pressed"]
 [connection signal="pressed" from="popUp/baseMenuScreenContainer/baseMenuScreen/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/rightbuttonContainer/settingsToggleButton" to="popUp" method="_on_settings_toggle_button_pressed"]
 [connection signal="pressed" from="popUp/openMenuScreen/menuButton" to="popUp" method="_on_menu_button_pressed"]
@@ -1087,3 +1488,8 @@ text = "ATK BUFF
 [connection signal="pressed" from="popUp/settingsMenuScreen/settingsMenuContainer/NinePatchRect/MarginContainer/settingsToggleButtonContainer/settingsToggleButton" to="popUp" method="_on_settings_toggle_button_pressed"]
 [connection signal="pressed" from="popUp/quitMenuScreen/NinePatchRect/Margin/contentsContainer/HBoxContainer/quit" to="popUp" method="_on_quit_pressed"]
 [connection signal="pressed" from="popUp/quitMenuScreen/NinePatchRect/Margin/contentsContainer/HBoxContainer/quitButton" to="popUp" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/swordPatchRect/mainContainer/purschaseButtonContainer/swordButton" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/spearPatchRect/mainContainer/purschaseButtonContainer/spearButton" to="." method="_on_spear_button_pressed"]
+[connection signal="pressed" from="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow1/axePatchRect/mainContainer/purschaseButtonContainer/axeButton" to="." method="_on_axe_button_pressed"]
+[connection signal="pressed" from="popUp/shopMenuScreen/mainNinePatchRect/shopcontainer/HBoxContainer/contetntRow2/healPatchRect/mainContainer/purschaseButtonContainer/healButton" to="." method="_on_heal_button_pressed"]
+[connection signal="pressed" from="popUp/shopMenuScreen/mainNinePatchRect/MarginContainer/shopButton" to="popUp" method="_on_shop_button_pressed"]

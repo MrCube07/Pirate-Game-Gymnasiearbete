@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf2m2ji7bteep"]
+[gd_scene load_steps=11 format=3 uid="uid://cf2m2ji7bteep"]
 
 [ext_resource type="Script" uid="uid://cux5vptjrx2bc" path="res://Scripts/player_ship.gd" id="1_7vdj4"]
 [ext_resource type="Texture2D" uid="uid://cnfnfy4xjcans" path="res://Pirate/PNG/04.png" id="2_7vdj4"]
-[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="2_gbmm3"]
-[ext_resource type="Resource" uid="uid://rlfyw6t43jbq" path="res://Recourses/player_ship_stats.tres" id="2_ty8tg"]
+[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://Assets/kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="2_gbmm3"]
+[ext_resource type="Resource" path="res://Recourses/player_ship_stats.tres" id="2_ty8tg"]
 [ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="5_iitm4"]
-[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="6_l6tvr"]
+[ext_resource type="FontFile" uid="uid://b2bgy3dvd8y1e" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf" id="6_l6tvr"]
+[ext_resource type="Texture2D" uid="uid://cjwbted6e8bc2" path="res://Assets/kenney_ui-pack-adventure/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="7_0gljw"]
+[ext_resource type="PackedScene" uid="uid://bpsrn4wc8548e" path="res://addons/health_bar_2d/health_bar_2d.tscn" id="8_xljp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbmm3"]
 size = Vector2(342.25, 190.5)
@@ -17,7 +19,7 @@ height = 209.372
 [node name="player_ship" type="CharacterBody2D" node_paths=PackedStringArray("boat_entry")]
 scale = Vector2(2, 2)
 collision_layer = 256
-collision_mask = 62
+collision_mask = 318
 script = ExtResource("1_7vdj4")
 boat_entry = NodePath("boatUI")
 stats = ExtResource("2_ty8tg")
@@ -58,10 +60,16 @@ position = Vector2(-59.5, 131)
 position = Vector2(-59.5, -130.5)
 
 [node name="player_driving_pos" type="Marker2D" parent="."]
+visible = false
 position = Vector2(1, 1.5)
 
 [node name="player_exit_pos" type="Marker2D" parent="."]
 position = Vector2(-1, -179.5)
+
+[node name="RayCast2D" type="RayCast2D" parent="player_exit_pos"]
+target_position = Vector2(1.5, 8)
+collision_mask = 2
+hit_from_inside = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1.5, 48.5)
@@ -111,10 +119,43 @@ theme_override_fonts/font = ExtResource("6_l6tvr")
 theme_override_font_sizes/font_size = 42
 text = "ENTER/EXIT BOAT [E]"
 
+[node name="NinePatchRect" type="NinePatchRect" parent="boatUI/MarginContainer"]
+custom_minimum_size = Vector2(500, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("7_0gljw")
+region_rect = Rect2(201, 105, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="HealthBar2D" parent="boatUI/MarginContainer/NinePatchRect" instance=ExtResource("8_xljp0")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.418
+anchor_top = 0.5
+anchor_right = 0.418
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -6.5
+offset_right = -190.0
+offset_bottom = -5.5
+grow_horizontal = 2
+scale = Vector2(40.5, 11)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+_static = true
+_gradient = true
+_animation_timeout = 600.0
+_offset = Vector2(8, 7)
+
 [node name="startup" type="Timer" parent="."]
 
 [connection signal="body_entered" from="EnterBoatArea" to="." method="_on_enter_boat_area_body_entered"]
 [connection signal="body_exited" from="EnterBoatArea" to="." method="_on_enter_boat_area_body_exited"]
 [connection signal="timeout" from="right_cannon_cd" to="." method="_on_right_cannon_cd_timeout"]
 [connection signal="timeout" from="left_cannon_cd" to="." method="_on_left_cannon_cd_timeout"]
+[connection signal="health_changed" from="Hurtbox" to="." method="_on_hurtbox_health_changed"]
 [connection signal="timeout" from="startup" to="." method="_on_startup_timeout"]

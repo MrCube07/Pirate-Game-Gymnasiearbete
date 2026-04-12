@@ -55,22 +55,22 @@ func _physics_process(delta: float) -> void:
 
 func _movement(delta):
 
-	# 1. Hämta nästa punkt i stigen
+	# Hämta nästa punkt i stigen
 	var next_pos = nav_agent.get_next_path_position()
 	
-	# 2. Räkna ut riktningen till punkten (globalt)
+	# Räkna ut riktningen till punkten (global)
 	var direction = global_position.direction_to(next_pos)
 	
-	# 3. Rotera skeppet gradvis mot målet
+	# Rotera skeppet gradvis mot målet
 	# lerp_angle ser till att skeppet roterar den kortaste vägen
 	var target_angle = direction.angle()
 	rotation = lerp_angle(rotation, target_angle, ROTATION_SPEED * delta)
 	
-	# 4. Rörelse framåt baserat på nuvarande rotation
+	
 	var forward_direction = Vector2.RIGHT.rotated(rotation)
 	
 	# Logik för om vi ska åka eller stanna
-	if not nav_agent.is_navigation_finished(): # Bättre än 'in_range' variabeln ibland
+	if not nav_agent.is_navigation_finished(): 
 		velocity = velocity.move_toward(forward_direction * MAX_SPEED, ACC * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
@@ -83,7 +83,7 @@ func makepath() -> void:
 func right_shoot():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation + PI
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $right_muzzle.global_position
 	instance.spawnRot = shoot_angle
 	instance.dir = Vector2.UP.rotated(shoot_angle) # Skickar en riktningsvektor
@@ -93,7 +93,7 @@ func right_shoot():
 func left_shoot():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation 
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $left_muzzle.global_position
 	instance.spawnRot = shoot_angle
 	instance.dir = Vector2.UP.rotated(shoot_angle)
@@ -101,6 +101,7 @@ func left_shoot():
 	main.add_child.call_deferred(instance)
 
 func _check_sights_and_shoot():
+	#cannon information
 	if right_cooldown and right_sight.is_colliding():
 		cannon = "Right"
 		_enter_shooting_state()
@@ -113,34 +114,33 @@ func _check_sights_and_shoot():
 func _idle_state(delta):
 	var dist_to_player = global_position.distance_to(player.global_position)
 	
-	# 1. Transition: If player moves outside combat range, start driving again
+	# movementlogik
 	if dist_to_player > combat_range:
 		_enter_driving_state()
 		return
 
-	# 2. Rotation: Turn Broadside
+	# 2. Rotation
 	var dir_to_player = global_position.direction_to(player.global_position)
 	var angle_to_player = dir_to_player.angle()
 	
-	# Determine if player is on our left or right side to choose the best broadside
+	# H/V
 	var ship_forward = Vector2.RIGHT.rotated(rotation)
 	var side_checker = ship_forward.cross(dir_to_player)
 	
 	var target_angle: float
 	if side_checker > 0:
-		target_angle = angle_to_player - PI/2 # Turn right side to player
+		target_angle = angle_to_player - PI/2 # H -> player
 	else:
-		target_angle = angle_to_player + PI/2 # Turn left side to player
+		target_angle = angle_to_player + PI/2 # V -> player
 	
 	rotation = lerp_angle(rotation, target_angle, ROTATION_SPEED * delta)
 
-	# 3. Shooting: Check if sights are hitting player
 	_check_sights_and_shoot()
 	
-	# 4. Movement: Stop entirely
+	# inbromsning/ friktion
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
-	
+	#död
 	if stats.health <= 0 and can_die:
 		_enter_sunken_state()
 
@@ -150,12 +150,12 @@ func _driving_state(delta):
 	
 	_movement(delta)
 	
-	# 1. Transition: Stop and fight if within combat range
+	# friktioon/ inbromsning
 	if dist_to_player < combat_range:
 		_enter_idle_state()
 		return
 	
-	# 2. Transition: Stop if player is totally out of detection range (optional)
+	# utanför combatrange
 	if dist_to_player > detection_range:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	
@@ -164,7 +164,7 @@ func _driving_state(delta):
 
 
 func _shooting_state(delta):
-	# Keep slowing down while shooting
+	# inbromsning/friktion
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
 	
@@ -177,12 +177,14 @@ func _shooting_state(delta):
 		left_cd.start()
 		left_cooldown = false
 		
-	# Return to idle (broadside positioning) immediately after firing
+	
 	_enter_idle_state()
 
 func _sunken_state(delta):
 	set_physics_process(false)
 	death_particles.emitting = true
+	Global.coins += 40
+	Global.score += 100
 	
 	
 #################### ENTER STATE FUNKTIONS ##############

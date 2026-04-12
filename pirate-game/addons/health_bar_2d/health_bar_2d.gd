@@ -1,5 +1,12 @@
 extends TextureProgressBar
 
+"JAG TOG DENNA FRÅN ASSETLIB OCH IMPLEMENTERADE DEN"
+
+
+
+
+
+
 # if false, health bar will only show itself when value is changed
 @export var _static:bool = false
 # if set true, health bar color will change as value decreases
@@ -62,10 +69,9 @@ func setup_with_stats(stats_resource: Stats) -> void:
 	value = stats_resource.health
 	
 	# Connect directly to the Stats resource signal
-	# This avoids all the issues with Enemy/Hurtbox signal typos
 	stats_resource.health_changed.connect(_on_stats_health_changed)
 	
-	print("HealthBar: Connected directly to Stats Resource")
+
 
 func _on_stats_health_changed(current: int, _max_hp: int) -> void:
 	value = current

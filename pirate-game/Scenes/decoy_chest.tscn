@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvrnvrhgbo5c7"]
+
+[ext_resource type="Texture2D" uid="uid://cqpr606p10te" path="res://Pirate/PNG/07.png" id="1_p0wow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmguq"]
+size = Vector2(140, 96)
+
+[node name="decoy_chest" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p0wow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 0.00262394
+shape = SubResource("RectangleShape2D_pmguq")

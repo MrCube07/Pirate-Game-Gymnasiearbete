@@ -63,7 +63,7 @@ func _movement(delta):
 	# 1. Hämta nästa punkt i stigen
 	var next_pos = nav_agent.get_next_path_position()
 	
-	# 2. Räkna ut riktningen till punkten (globalt)
+	# 2. Räkna ut riktningen till punkten (global)
 	var direction = global_position.direction_to(next_pos)
 	
 	# 3. Rotera skeppet gradvis mot målet
@@ -75,7 +75,7 @@ func _movement(delta):
 	var forward_direction = Vector2.RIGHT.rotated(rotation)
 	
 	# Logik för om vi ska åka eller stanna
-	if not nav_agent.is_navigation_finished(): # Bättre än 'in_range' variabeln ibland
+	if not nav_agent.is_navigation_finished():
 		velocity = velocity.move_toward(forward_direction * MAX_SPEED, ACC * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
@@ -83,12 +83,13 @@ func _movement(delta):
 	move_and_slide()
 	
 func makepath() -> void:
+	#pathfinding
 	nav_agent.target_position = player.global_position
 
 func right_shoot1():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation + PI
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $Shooting/right_muzzle1.global_position
 	instance.spawnRot = shoot_angle
 	instance.dir = Vector2.UP.rotated(shoot_angle) # Skickar en riktningsvektor
@@ -98,7 +99,7 @@ func right_shoot1():
 func left_shoot1():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation 
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $Shooting/left_muzzle1.global_position
 	instance.spawnRot = shoot_angle
 	instance.dir = Vector2.UP.rotated(shoot_angle)
@@ -108,17 +109,17 @@ func left_shoot1():
 func right_shoot2():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation + PI
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $Shooting/right_muzzle2.global_position
 	instance.spawnRot = shoot_angle
-	instance.dir = Vector2.UP.rotated(shoot_angle) # Skickar en riktningsvektor
+	instance.dir = Vector2.UP.rotated(shoot_angle) #riktningsvektor
 	
 	main.add_child.call_deferred(instance)
 
 func left_shoot2():
 	var instance = cannon_ball.instantiate()
 	var shoot_angle = global_rotation 
-	
+	#skickas till cannon_ball.gd
 	instance.spawnPos = $Shooting/left_muzzle2.global_position
 	instance.spawnRot = shoot_angle
 	instance.dir = Vector2.UP.rotated(shoot_angle)
@@ -127,6 +128,7 @@ func left_shoot2():
 
 
 func _check_sights_and_shoot():
+	#Cannon information
 	if right_cooldown1 and right_sight1.is_colliding():
 		cannon = "Right1"
 		_enter_shooting_state()
@@ -145,31 +147,31 @@ func _check_sights_and_shoot():
 func _idle_state(delta):
 	var dist_to_player = global_position.distance_to(player.global_position)
 	
-	# 1. Transition: If player moves outside combat range, start driving again
+	# movementconditions
 	if dist_to_player > combat_range:
 		_enter_driving_state()
 		return
 
-	# 2. Rotation: Turn Broadside
+	#  Rotation
 	var dir_to_player = global_position.direction_to(player.global_position)
 	var angle_to_player = dir_to_player.angle()
 	
-	# Determine if player is on our left or right side to choose the best broadside
+	#H/V
 	var ship_forward = Vector2.RIGHT.rotated(rotation)
 	var side_checker = ship_forward.cross(dir_to_player)
 	
 	var target_angle: float
 	if side_checker > 0:
-		target_angle = angle_to_player - PI/2 # Turn right side to player
+		target_angle = angle_to_player - PI/2 # H -> PLayer
 	else:
-		target_angle = angle_to_player + PI/2 # Turn left side to player
+		target_angle = angle_to_player + PI/2 # V -> PLayer
 	
 	rotation = lerp_angle(rotation, target_angle, ROTATION_SPEED * delta)
 
-	# 3. Shooting: Check if sights are hitting player
+	# Kollar shooting
 	_check_sights_and_shoot()
 	
-	# 4. Movement: Stop entirely
+	# 4. inbromsning/ friktion
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
 	
@@ -182,19 +184,19 @@ func _driving_state(delta):
 	
 	_movement(delta)
 	
-	# 1. Transition: Stop and fight if within combat range
+	# inom combat range
 	if dist_to_player < combat_range:
 		_enter_idle_state()
 		return
 	
-	# 2. Transition: Stop if player is totally out of detection range (optional)
+	# 2. för långt bort från player
 	if dist_to_player > detection_range:
 		velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	if stats.health <= 0 and can_die:
 		_enter_sunken_state()
 
 func _shooting_state(delta):
-	# Keep slowing down while shooting
+	# inbromsning/friktion
 	velocity = velocity.move_toward(Vector2.ZERO, FRIC * delta)
 	move_and_slide()
 	
@@ -215,14 +217,15 @@ func _shooting_state(delta):
 		left_cd2.start()
 		left_cooldown2 = false
 		
-	# Return to idle (broadside positioning) immediately after firing
+	# Return to idle
 	_enter_idle_state()
 
 func _sunken_state(delta):
 	set_physics_process(false)
-	particles1.Emitting = true
-	particles2.Emitting = true
-	
+	particles1.emitting = true
+	particles2.emitting = true
+	Global.coins += 100
+	Global.score += 150
 	
 	
 	
@@ -244,6 +247,7 @@ func _enter_sunken_state():
 	
 	
 func _on_navi_cd_timeout() -> void:
+	#hur ofta pathfinding updateras
 	makepath()
 	
 	

@@ -60,7 +60,7 @@ func _attacking_state(delta):
 	
 func _broken_state(delta):
 	set_physics_process(false)
-	
+	Global.score += 50
 	
 ##################### ENTER STATE FUNKTIONS #####################
 

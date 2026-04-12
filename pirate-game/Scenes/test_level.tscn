@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=4 uid="uid://c0so65tk7o1ix"]
 
 [ext_resource type="PackedScene" uid="uid://7koftngh4u3c" path="res://Scenes/map_template.tscn" id="1_2yvf5"]
-[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_3ihge"]
-[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_akkqd"]
+[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_3ihge"]
+[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_akkqd"]
 [ext_resource type="PackedScene" uid="uid://cf2m2ji7bteep" path="res://Scenes/player_ship.tscn" id="5_1rqgg"]
 [ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="5_3ihge"]
 [ext_resource type="PackedScene" uid="uid://cq6kucqhq3wfw" path="res://Scenes/cannon_wall.tscn" id="6_mwmob"]

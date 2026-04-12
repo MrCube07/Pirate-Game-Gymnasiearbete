@@ -1,12 +1,19 @@
 extends Resource
 class_name Stats
 
+"""
+STATS
+
+taget från youtube video, mycket användbar men hann inte använda buffs
+https://www.youtube.com/watch?v=vsBb9921GfA&t=5s
+"""
+
+
 enum BuffableStats {
 	MAX_HEALTH,
 	DEFENCE,
 	DAMAGE
 }
-
 
 
 const STAT_CURVES: Dictionary[BuffableStats, Curve] = {
@@ -38,8 +45,7 @@ var stat_buffs: Array[StatBuff]
 
 var health: int = 0: set = _on_health_set
 
-# OBS: Tog bort _init(). Den körs för tidigt.
-# Använd initialize() istället.
+
 
 func initialize() -> void:
 	recalculate_stats()
@@ -78,22 +84,25 @@ func recalculate_stats() -> void:
 	
 	   
 	var stat_sample_pos: float = (float(level) / 100.0) - 0.01
-	 
+	"""
 	if STAT_CURVES.has(BuffableStats.MAX_HEALTH):
 		var multiplier = STAT_CURVES[BuffableStats.MAX_HEALTH].sample(stat_sample_pos)
 		current_max_health = int(base_max_health * multiplier)
 	else:
-		current_max_health = base_max_health
-	
+		"""
+	current_max_health = base_max_health
+	"""
 	if STAT_CURVES.has(BuffableStats.DAMAGE):
 		current_damage = int(base_damage * STAT_CURVES[BuffableStats.DAMAGE].sample(stat_sample_pos))
 	else:
-		current_damage = base_damage
-
+	"""
+	current_damage = base_damage
+	"""
 	if STAT_CURVES.has(BuffableStats.DEFENCE):
 		current_defence = int(base_defence * STAT_CURVES[BuffableStats.DEFENCE].sample(stat_sample_pos))
-	else:
-		current_defence = base_defence
+	else:"""
+	
+	current_defence = base_defence
 	
 	for stat_name in stat_multipliers:
 		var cur_property_name: String = str("current_" + stat_name)

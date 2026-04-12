@@ -1,18 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://tsst1s4ru8bh"]
+[gd_scene load_steps=7 format=3 uid="uid://tsst1s4ru8bh"]
 
-[ext_resource type="Script" uid="uid://d22f1tbkejl0m" path="res://chest.gd" id="1_cjfl1"]
+[ext_resource type="Script" uid="uid://d22f1tbkejl0m" path="res://Scripts/chest.gd" id="1_cjfl1"]
 [ext_resource type="Texture2D" uid="uid://cqpr606p10te" path="res://Pirate/PNG/07.png" id="2_bagqn"]
-[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="2_pmguq"]
+[ext_resource type="Resource" path="res://Recourses/imact_hitbox_stats.tres" id="2_pmguq"]
 [ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="4_dq33m"]
-
-[sub_resource type="Resource" id="Resource_j6qf6"]
-script = ExtResource("2_pmguq")
-base_max_health = 1
-base_defence = 1
-base_damage = 1
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmguq"]
 size = Vector2(140, 96)
@@ -24,7 +15,7 @@ size = Vector2(81, 135)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_cjfl1")
-stats = SubResource("Resource_j6qf6")
+stats = ExtResource("2_pmguq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bagqn")

@@ -1,12 +1,12 @@
-[gd_scene load_steps=63 format=4 uid="uid://b766qft2s6hvs"]
+[gd_scene load_steps=69 format=4 uid="uid://b766qft2s6hvs"]
 
+[ext_resource type="Script" uid="uid://bdnik1u0umr7a" path="res://Scripts/tutorial.gd" id="1_8mnmb"]
 [ext_resource type="PackedScene" uid="uid://7koftngh4u3c" path="res://Scenes/map_template.tscn" id="1_8va2t"]
-[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_8mnmb"]
-[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_koko0"]
+[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_8mnmb"]
+[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_koko0"]
 [ext_resource type="PackedScene" uid="uid://3hi2t2wd7abw" path="res://Scenes/player.tscn" id="5_ap3ea"]
 [ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="6_t6ver"]
 [ext_resource type="PackedScene" uid="uid://bqiaplbiau2c6" path="res://Scenes/mele_enemy.tscn" id="7_2nb4t"]
-[ext_resource type="Resource" uid="uid://cev20ucm17uh" path="res://Recourses/mele_enemy_stats.tres" id="8_8mnmb"]
 [ext_resource type="PackedScene" uid="uid://cf2m2ji7bteep" path="res://Scenes/player_ship.tscn" id="8_jb51l"]
 [ext_resource type="PackedScene" uid="uid://c0hft8fgldlnk" path="res://Scenes/enemy_heavy_ship.tscn" id="9_dxsep"]
 [ext_resource type="PackedScene" uid="uid://cp7crl4sxk446" path="res://Scenes/enemy_light_ship.tscn" id="10_lexqi"]
@@ -211,7 +211,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_70gml"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mnmb"]
 texture = ExtResource("2_8mnmb")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -411,7 +411,7 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1024
 physics_layer_0/collision_mask = 32
 navigation_layer_0/layers = 2
-sources/3 = SubResource("TileSetAtlasSource_70gml")
+sources/3 = SubResource("TileSetAtlasSource_8mnmb")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gbhdq"]
 vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
@@ -437,7 +437,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6fgx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_koko0"]
 texture = ExtResource("2_8mnmb")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -905,9 +905,9 @@ terrain_set_2/terrain_0/color = Color(0.952605, 0.890391, 0.85514, 1)
 terrain_set_2/terrain_1/name = "towers"
 terrain_set_2/terrain_1/color = Color(0.69859, 0.485387, 0, 1)
 navigation_layer_0/layers = 2
-sources/3 = SubResource("TileSetAtlasSource_b6fgx")
+sources/3 = SubResource("TileSetAtlasSource_koko0")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1shcd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsb8r"]
 texture = ExtResource("3_koko0")
 texture_region_size = Vector2i(128, 128)
 4:0/0 = 0
@@ -6227,7 +6227,7 @@ physics_layer_0/collision_mask = 120
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "walls"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_1shcd")
+sources/0 = SubResource("TileSetAtlasSource_lsb8r")
 
 [sub_resource type="Resource" id="Resource_ir8xr"]
 resource_local_to_scene = true
@@ -6235,18 +6235,38 @@ script = ExtResource("6_t6ver")
 base_max_health = 1000
 base_defence = 50
 base_damage = 200
-experience = 0
+experience = 5
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
 [sub_resource type="Resource" id="Resource_x5wbm"]
 resource_local_to_scene = true
 script = ExtResource("6_t6ver")
-base_max_health = 750
+base_max_health = 2000
 base_defence = 10
 base_damage = 10
 experience = 0
-explosion_resistance = 0.179
+explosion_resistance = 0.529
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_8va2t"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_koko0"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
 [sub_resource type="Resource" id="Resource_qj614"]
@@ -6299,7 +6319,48 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
+[sub_resource type="Resource" id="Resource_lsb8r"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_ap3ea"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_t6ver"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_2nb4t"]
+resource_local_to_scene = true
+script = ExtResource("6_t6ver")
+base_max_health = 750
+base_defence = 10
+base_damage = 100
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
 [node name="Tutorial" type="Node2D"]
+script = ExtResource("1_8mnmb")
 
 [node name="tutorial_map" type="Node2D" parent="."]
 
@@ -6338,20 +6399,13 @@ stats = SubResource("Resource_x5wbm")
 top_level = true
 position = Vector2(6254, 1346)
 rotation = 2.74191
-stats = ExtResource("8_8mnmb")
-player = NodePath("../Player")
-
-[node name="mele_enemy7" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
-top_level = true
-position = Vector2(2946, 1897)
-rotation = 2.74191
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_8va2t")
 player = NodePath("../Player")
 
 [node name="mele_enemy2" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
 position = Vector2(6229, 2221)
 rotation = -3.10843
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_koko0")
 player = NodePath("../Player")
 
 [node name="enemy_heavy_ship" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("9_dxsep")]
@@ -6386,25 +6440,25 @@ stats = SubResource("Resource_x4bq3")
 [node name="mele_enemy3" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
 position = Vector2(12307, 1118)
 rotation = 2.74191
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_lsb8r")
 player = NodePath("../Player")
 
 [node name="mele_enemy4" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
 position = Vector2(12254, 1689)
 rotation = 2.99755
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_ap3ea")
 player = NodePath("../Player")
 
 [node name="mele_enemy5" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
 position = Vector2(12264, 2240)
 rotation = 3.13794
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_t6ver")
 player = NodePath("../Player")
 
 [node name="mele_enemy6" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("7_2nb4t")]
 position = Vector2(13240, 1573)
 rotation = 3.07905
-stats = ExtResource("8_8mnmb")
+stats = SubResource("Resource_2nb4t")
 player = NodePath("../Player")
 
 [node name="chest" parent="scenes" node_paths=PackedStringArray("player") instance=ExtResource("11_8va2t")]

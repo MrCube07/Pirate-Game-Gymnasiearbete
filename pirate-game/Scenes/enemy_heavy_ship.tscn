@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://coiyjajj15e6x" path="res://Scripts/enemy_heavy_ship.gd" id="1_hrk1m"]
 [ext_resource type="Texture2D" uid="uid://cc3ajpjnkpndt" path="res://Pirate/PNG/02.png" id="2_1xuqa"]
-[ext_resource type="Resource" uid="uid://crrn03l6vpkfi" path="res://Recourses/enemy_heavy_ship_stats.tres" id="2_wim3o"]
-[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="3_plsoc"]
+[ext_resource type="Resource" path="res://Recourses/enemy_heavy_ship_stats.tres" id="2_wim3o"]
+[ext_resource type="Texture2D" uid="uid://yp40xm7tgrri" path="res://Assets/kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="3_plsoc"]
 [ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="5_585rb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8p55g"]

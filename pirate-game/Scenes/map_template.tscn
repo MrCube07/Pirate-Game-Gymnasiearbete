@@ -1,8 +1,8 @@
 [gd_scene load_steps=160 format=4 uid="uid://7koftngh4u3c"]
 
-[ext_resource type="Texture2D" uid="uid://6ge632e6bwe" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2water.png" id="1_i6guq"]
-[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_lo83q"]
-[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_vcqt6"]
+[ext_resource type="Texture2D" uid="uid://6ge632e6bwe" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2water.png" id="1_i6guq"]
+[ext_resource type="Texture2D" uid="uid://bf1kdogok4wui" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2.png" id="2_lo83q"]
+[ext_resource type="Texture2D" uid="uid://d1e1emlavgbbc" path="res://Assets/kenney_pirate-pack/Tilesheet/tiles_sheet@2buildings.png" id="3_vcqt6"]
 [ext_resource type="PackedScene" uid="uid://cq6kucqhq3wfw" path="res://Scenes/cannon_wall.tscn" id="4_lo83q"]
 [ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="5_vk10v"]
 

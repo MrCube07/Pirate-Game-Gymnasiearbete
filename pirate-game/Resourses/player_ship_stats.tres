@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://rlfyw6t43jbq"]
+
+[ext_resource type="Script" uid="uid://oiywtg4nkgh5" path="res://Scripts/stats.gd" id="1_hv68i"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_hv68i")
+base_max_health = 5000
+base_defence = 35
+base_damage = 10
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"

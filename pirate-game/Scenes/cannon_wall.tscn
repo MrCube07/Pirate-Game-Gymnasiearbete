@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cq6kucqhq3wfw"]
 
-[ext_resource type="Texture2D" uid="uid://csixqtqpefrh4" path="res://kenney_pirate-pack/PNG/Default size/Tiles/tile_47.png" id="1_fhvrt"]
+[ext_resource type="Texture2D" uid="uid://csixqtqpefrh4" path="res://Assets/kenney_pirate-pack/PNG/Default size/Tiles/tile_47.png" id="1_fhvrt"]
 [ext_resource type="Script" uid="uid://dp0guk1lmregj" path="res://Scripts/cannon_wall.gd" id="1_qdace"]
-[ext_resource type="Resource" uid="uid://cc23aimvhoxh2" path="res://Recourses/cannon_wall_stats.tres" id="2_0ox5w"]
+[ext_resource type="Resource" path="res://Recourses/cannon_wall_stats.tres" id="2_0ox5w"]
 [ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="4_80y12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhvrt"]
