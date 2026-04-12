@@ -344,6 +344,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_yhxw7")
 text = "LEVEL 4"
 
 [node name="level5ButtonContainer" type="MarginContainer" parent="mainContainer/levelMenuContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
 
