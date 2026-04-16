@@ -6234,16 +6234,6 @@ terrain_set_0/terrain_0/name = "walls"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_hj5x7")
 
-[sub_resource type="Resource" id="Resource_nx14l"]
-resource_local_to_scene = true
-script = ExtResource("8_fhuy1")
-base_max_health = 750
-base_defence = 10
-base_damage = 150
-experience = 100
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
 [sub_resource type="Resource" id="Resource_bl0du"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
@@ -6314,6 +6304,16 @@ experience = 100
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
+[sub_resource type="Resource" id="Resource_ijtdf"]
+resource_local_to_scene = true
+script = ExtResource("8_fhuy1")
+base_max_health = 750
+base_defence = 10
+base_damage = 150
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
 [sub_resource type="Resource" id="Resource_5s1wx"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
@@ -6324,42 +6324,12 @@ experience = 1
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
-[sub_resource type="Resource" id="Resource_kjoi8"]
+[sub_resource type="Resource" id="Resource_c5xoi"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
 base_max_health = 2500
 base_defence = 25
 base_damage = 10
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_nuasi"]
-resource_local_to_scene = true
-script = ExtResource("8_fhuy1")
-base_max_health = 400
-base_defence = 5
-base_damage = 0
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_ijtdf"]
-resource_local_to_scene = true
-script = ExtResource("8_fhuy1")
-base_max_health = 400
-base_defence = 5
-base_damage = 0
-experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_c5xoi"]
-resource_local_to_scene = true
-script = ExtResource("8_fhuy1")
-base_max_health = 400
-base_defence = 5
-base_damage = 0
 experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
@@ -6384,7 +6354,7 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
-[sub_resource type="Resource" id="Resource_kwf64"]
+[sub_resource type="Resource" id="Resource_5jii6"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
 base_max_health = 400
@@ -6394,7 +6364,37 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
-[sub_resource type="Resource" id="Resource_5jii6"]
+[sub_resource type="Resource" id="Resource_d42f2"]
+resource_local_to_scene = true
+script = ExtResource("8_fhuy1")
+base_max_health = 400
+base_defence = 5
+base_damage = 0
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_nx14l"]
+resource_local_to_scene = true
+script = ExtResource("8_fhuy1")
+base_max_health = 400
+base_defence = 5
+base_damage = 0
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_kjoi8"]
+resource_local_to_scene = true
+script = ExtResource("8_fhuy1")
+base_max_health = 400
+base_defence = 5
+base_damage = 0
+experience = 0
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_nuasi"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
 base_max_health = 1000
@@ -6404,7 +6404,7 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
-[sub_resource type="Resource" id="Resource_d42f2"]
+[sub_resource type="Resource" id="Resource_kwf64"]
 resource_local_to_scene = true
 script = ExtResource("8_fhuy1")
 base_max_health = 5000
@@ -6513,49 +6513,49 @@ FIND THE CHEST
 [node name="mele_enemy" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(3562, 2408)
 rotation = 3.00966
-stats = SubResource("Resource_nx14l")
+stats = SubResource("Resource_bl0du")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy2" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(4543, 2740)
 rotation = 3.59123
-stats = SubResource("Resource_bl0du")
+stats = SubResource("Resource_q0ycs")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy3" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(7023, 3086)
 rotation = 3.30512
-stats = SubResource("Resource_q0ycs")
+stats = SubResource("Resource_hj5x7")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy4" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(7023, 2812)
 rotation = 3.02937
-stats = SubResource("Resource_hj5x7")
+stats = SubResource("Resource_yvrk7")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy5" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(8177, 7614)
 rotation = 4.66399
-stats = SubResource("Resource_yvrk7")
+stats = SubResource("Resource_fhuy1")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy6" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(12994, 4946)
 rotation = 5.3403
-stats = SubResource("Resource_fhuy1")
+stats = SubResource("Resource_i6dbo")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy7" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(9462, 5932)
 rotation = 5.3403
-stats = SubResource("Resource_i6dbo")
+stats = SubResource("Resource_e2piv")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy8" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_e2piv")]
 position = Vector2(9397, 4914)
 rotation = 6.57869
-stats = SubResource("Resource_e2piv")
+stats = SubResource("Resource_ijtdf")
 player = NodePath("../../player/Player")
 
 [node name="heavy_enemy" parent="imported_scenes/enemies/grounded_enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_ijtdf")]
@@ -6568,7 +6568,7 @@ player = NodePath("../../player/Player")
 [node name="enemy_light_ship" parent="imported_scenes/enemies/naval_enemies" node_paths=PackedStringArray("player") instance=ExtResource("12_c5xoi")]
 position = Vector2(11536, 2553)
 rotation = -3.20255
-stats = SubResource("Resource_kjoi8")
+stats = SubResource("Resource_c5xoi")
 detection_range = 2000
 player = NodePath("../../player/Player")
 
@@ -6576,40 +6576,40 @@ player = NodePath("../../player/Player")
 
 [node name="Cannon_Wall" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(1986, 2583)
-stats = SubResource("Resource_nuasi")
+stats = SubResource("Resource_sfey3")
 
 [node name="Cannon_Wall2" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(5698, 3081)
-stats = SubResource("Resource_ijtdf")
+stats = SubResource("Resource_4k5rq")
 
 [node name="Cannon_Wall3" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(7617, 1335)
-stats = SubResource("Resource_c5xoi")
+stats = SubResource("Resource_5jii6")
 
 [node name="Cannon_Wall4" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(13378, 1282)
 rotation = -1.5708
-stats = SubResource("Resource_sfey3")
+stats = SubResource("Resource_d42f2")
 
 [node name="Cannon_Wall5" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(8386, 5699)
-stats = SubResource("Resource_4k5rq")
+stats = SubResource("Resource_nx14l")
 
 [node name="Cannon_Wall6" parent="imported_scenes/enemies/cannon_walls" instance=ExtResource("13_sfey3")]
 position = Vector2(8389, 4789)
-stats = SubResource("Resource_kwf64")
+stats = SubResource("Resource_kjoi8")
 
 [node name="player" type="Node2D" parent="imported_scenes/enemies"]
 
 [node name="Player" parent="imported_scenes/enemies/player" instance=ExtResource("7_yvrk7")]
 position = Vector2(2279, 2581)
-stats = SubResource("Resource_5jii6")
+stats = SubResource("Resource_nuasi")
 
 [node name="player_ship" parent="imported_scenes/enemies/player" node_paths=PackedStringArray("player") instance=ExtResource("9_i6dbo")]
 position = Vector2(8336, 2351)
 rotation = -1.54727
 player = NodePath("../Player")
-stats = SubResource("Resource_d42f2")
+stats = SubResource("Resource_kwf64")
 
 [node name="win_condition" type="Node2D" parent="imported_scenes"]
 

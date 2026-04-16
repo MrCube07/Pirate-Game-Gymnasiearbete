@@ -5829,7 +5829,7 @@ terrain_set_0/terrain_0/name = "walls"
 terrain_set_0/terrain_0/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_3oae0")
 
-[sub_resource type="Resource" id="Resource_6xecf"]
+[sub_resource type="Resource" id="Resource_3v663"]
 resource_local_to_scene = true
 script = ExtResource("7_w8kbg")
 base_max_health = 1000
@@ -5839,33 +5839,13 @@ experience = 0
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
-[sub_resource type="Resource" id="Resource_gtxiy"]
+[sub_resource type="Resource" id="Resource_w8kbg"]
 resource_local_to_scene = true
 script = ExtResource("7_w8kbg")
 base_max_health = 1
 base_defence = 0
 base_damage = 50
 experience = 0
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_w8kbg"]
-resource_local_to_scene = true
-script = ExtResource("7_w8kbg")
-base_max_health = 750
-base_defence = 10
-base_damage = 150
-experience = 100
-explosion_resistance = 0.0
-metadata/_custom_type_script = "uid://oiywtg4nkgh5"
-
-[sub_resource type="Resource" id="Resource_3v663"]
-resource_local_to_scene = true
-script = ExtResource("7_w8kbg")
-base_max_health = 750
-base_defence = 10
-base_damage = 150
-experience = 100
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
@@ -5939,6 +5919,16 @@ experience = 100
 explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
+[sub_resource type="Resource" id="Resource_6xecf"]
+resource_local_to_scene = true
+script = ExtResource("7_w8kbg")
+base_max_health = 750
+base_defence = 10
+base_damage = 150
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
 [sub_resource type="Resource" id="Resource_qh6br"]
 resource_local_to_scene = true
 script = ExtResource("7_w8kbg")
@@ -6000,6 +5990,16 @@ explosion_resistance = 0.0
 metadata/_custom_type_script = "uid://oiywtg4nkgh5"
 
 [sub_resource type="Resource" id="Resource_6vef0"]
+resource_local_to_scene = true
+script = ExtResource("7_w8kbg")
+base_max_health = 750
+base_defence = 10
+base_damage = 150
+experience = 100
+explosion_resistance = 0.0
+metadata/_custom_type_script = "uid://oiywtg4nkgh5"
+
+[sub_resource type="Resource" id="Resource_gtxiy"]
 resource_local_to_scene = true
 script = ExtResource("7_w8kbg")
 base_max_health = 750
@@ -6122,7 +6122,7 @@ TO THE SPEAR THIS LEVEL)
 
 [node name="Player" parent="imported_scenes/player" instance=ExtResource("6_3v663")]
 position = Vector2(6046, 4031)
-stats = SubResource("Resource_6xecf")
+stats = SubResource("Resource_3v663")
 
 [node name="wictory_condition" type="Node2D" parent="imported_scenes"]
 
@@ -6130,7 +6130,7 @@ stats = SubResource("Resource_6xecf")
 position = Vector2(5060, 7366)
 rotation = -2.93363
 player = NodePath("../../player/Player")
-stats = SubResource("Resource_gtxiy")
+stats = SubResource("Resource_w8kbg")
 
 [node name="decoy_chest" parent="imported_scenes/wictory_condition" instance=ExtResource("9_di0d6")]
 position = Vector2(5336, 7368)
@@ -6160,94 +6160,94 @@ rotation = -8.16591
 
 [node name="mele_enemy" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(6250, 2887)
-stats = SubResource("Resource_w8kbg")
+stats = SubResource("Resource_gxyip")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy8" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(6486, 2985)
-stats = SubResource("Resource_3v663")
+stats = SubResource("Resource_b8ytw")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy9" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(2241, 7289)
 rotation = -1.42392
-stats = SubResource("Resource_gxyip")
+stats = SubResource("Resource_mbnb1")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy10" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(7353, 6471)
 rotation = -1.42392
-stats = SubResource("Resource_b8ytw")
+stats = SubResource("Resource_cxe20")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy11" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(4339, 4698)
 rotation = -1.42392
-stats = SubResource("Resource_mbnb1")
+stats = SubResource("Resource_fmsuk")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy12" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(4369, 4915)
 rotation = -0.0586265
-stats = SubResource("Resource_cxe20")
+stats = SubResource("Resource_3oae0")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy13" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(3689, 2206)
 rotation = -0.692496
-stats = SubResource("Resource_fmsuk")
+stats = SubResource("Resource_a51ki")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy14" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(3807, 2383)
 rotation = -0.692496
-stats = SubResource("Resource_3oae0")
+stats = SubResource("Resource_6xecf")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy15" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(3896, 2688)
 rotation = -0.692496
-stats = SubResource("Resource_a51ki")
+stats = SubResource("Resource_qh6br")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy16" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(4054, 2875)
 rotation = -0.692496
-stats = SubResource("Resource_qh6br")
+stats = SubResource("Resource_nqprj")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy2" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(5915, 7231)
-stats = SubResource("Resource_nqprj")
+stats = SubResource("Resource_dt3rr")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy3" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(6476, 7369)
-stats = SubResource("Resource_dt3rr")
+stats = SubResource("Resource_o5257")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy4" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(7540, 2720)
 rotation = -2.65422
-stats = SubResource("Resource_o5257")
+stats = SubResource("Resource_2a174")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy7" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(8032, 2759)
 rotation = -2.65422
-stats = SubResource("Resource_2a174")
+stats = SubResource("Resource_sw1t4")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy5" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(8269, 4631)
 rotation = -0.634168
-stats = SubResource("Resource_sw1t4")
+stats = SubResource("Resource_6vef0")
 player = NodePath("../../player/Player")
 
 [node name="mele_enemy6" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("10_54c2w")]
 position = Vector2(8387, 4808)
 rotation = -0.634168
-stats = SubResource("Resource_6vef0")
+stats = SubResource("Resource_gtxiy")
 player = NodePath("../../player/Player")
 
 [node name="heavy_enemy" parent="imported_scenes/enemies" node_paths=PackedStringArray("player") instance=ExtResource("11_3v663")]

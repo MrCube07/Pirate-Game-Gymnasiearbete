@@ -1,7 +1,6 @@
-[gd_scene load_steps=136 format=3 uid="uid://bqiaplbiau2c6"]
+[gd_scene load_steps=137 format=3 uid="uid://bqiaplbiau2c6"]
 
 [ext_resource type="Script" uid="uid://dgdwkbtie7apc" path="res://Scripts/mele_enemy.gd" id="1_6cnfa"]
-[ext_resource type="Resource" path="res://Recourses/mele_enemy_stats.tres" id="2_ckii3"]
 [ext_resource type="Texture2D" uid="uid://cydex3ye2887" path="res://Assets/kenney_pirate-pack/PNG/Default size/Characters/yellow_character.png" id="2_q6fo7"]
 [ext_resource type="Texture2D" uid="uid://meyjq654ae64" path="res://Assets/kenney_pirate-pack/PNG/Default size/Items/shield_curved.png" id="3_ca15l"]
 [ext_resource type="Texture2D" uid="uid://b1ndl8dvhu4rv" path="res://Assets/kenney_pirate-pack/PNG/Default size/Items/weapon_longsword.png" id="4_wr3ox"]
@@ -10,6 +9,9 @@
 [ext_resource type="Script" uid="uid://dn50ap3hnb2gw" path="res://Scripts/hurtbox.gd" id="8_shht4"]
 [ext_resource type="Script" uid="uid://b2uq7rx1vd7ex" path="res://Scripts/hitbox.gd" id="9_cvxuv"]
 [ext_resource type="PackedScene" uid="uid://bpsrn4wc8548e" path="res://addons/health_bar_2d/health_bar_2d.tscn" id="10_cvxuv"]
+
+[sub_resource type="Resource" id="Resource_hkjj6"]
+metadata/__load_path__ = "res://Recourses/mele_enemy_stats.tres"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 20.0
@@ -1595,11 +1597,14 @@ size = Vector2(102, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvxuv"]
 radius = 25.02
 
+[sub_resource type="Resource" id="Resource_cvxuv"]
+metadata/__load_path__ = "res://Recourses/mele_enemy_stats.tres"
+
 [node name="mele_enemy" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 124
 script = ExtResource("1_6cnfa")
-stats = ExtResource("2_ckii3")
+stats = SubResource("Resource_hkjj6")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 light_mask = 0
@@ -1778,7 +1783,7 @@ collision_layer = 0
 collision_mask = 100
 monitorable = false
 script = ExtResource("9_cvxuv")
-attacker_stats = ExtResource("2_ckii3")
+attacker_stats = SubResource("Resource_cvxuv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(50, 4)
